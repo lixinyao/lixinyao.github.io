@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="R,pca,">
+
+
+
+
+
+  <link rel="alternate" href="http://www.xinyao.pub/atom.xml" title="李昕垚|Xinyao Li" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="主成分分析 不但是多元统计分析的重要部分，而且在日常的数据分析工作中也发挥着重要作用。以下详细介绍主成分分析的原理和R语言实践。">
+<meta name="keywords" content="R,pca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言与主成分分析">
+<meta property="og:url" content="http://www.xinyao.pub/2018/08/28/2018-08-28-r-pca/index.html">
+<meta property="og:site_name" content="李昕垚|Xinyao Li">
+<meta property="og:description" content="主成分分析 不但是多元统计分析的重要部分，而且在日常的数据分析工作中也发挥着重要作用。以下详细介绍主成分分析的原理和R语言实践。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2018/pca/pca1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2018/pca/pca2.png">
+<meta property="og:updated_time" content="2019-06-27T03:59:13.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R语言与主成分分析">
+<meta name="twitter:description" content="主成分分析 不但是多元统计分析的重要部分，而且在日常的数据分析工作中也发挥着重要作用。以下详细介绍主成分分析的原理和R语言实践。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2018/pca/pca1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xinyao.pub/2018/08/28/2018-08-28-r-pca/">
+
+
+
+
+
+  <title>R语言与主成分分析 | 李昕垚|Xinyao Li</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李昕垚|Xinyao Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁寒然后知松柏之后凋也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xinyao.pub/2018/08/28/2018-08-28-r-pca/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李昕垚">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李昕垚|Xinyao Li">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">R语言与主成分分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-28T00:00:00+08:00">
+                2018-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>主成分分析</strong> 不但是多元统计分析的重要部分，而且在日常的数据分析工作中也发挥着重要作用。以下详细介绍主成分分析的原理和R语言实践。</p>
+<a id="more"></a>
+<h1 id="PCA有什么用？"><a href="#PCA有什么用？" class="headerlink" title="PCA有什么用？"></a>PCA有什么用？</h1><p><strong>主成分分析</strong> （principal component analysis） 简称 <em>PCA</em>，主要通过变量的降维，将复杂问题简单化，方便理解现状及进一步分析。降维的思想很常见，以 <em>均值</em> 为例，由于我们无法理解较多数字的含义，用一个均值来表达较多数字的信息，这就是很朴素的降维思想。</p>
+<p>举个例子，以下是几个学生各科的成绩。我们很容易得出 <em>学生成绩的好坏主要由数学和物理决定</em> 的结论。其实这个结论已经蕴含了主成分分析的思想，将4个变量简化为2个，复杂的问题变的简单</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学生</th>
+<th style="text-align:center">语文</th>
+<th style="text-align:center">数学</th>
+<th style="text-align:center">英语</th>
+<th style="text-align:center">物理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">140</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">150</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">85</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">65</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">75</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">105</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">85</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">125</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">95</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>但是各科成绩变为以下数据，结论还能轻易得出吗？</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学生</th>
+<th style="text-align:center">语文</th>
+<th style="text-align:center">数学</th>
+<th style="text-align:center">英语</th>
+<th style="text-align:center">物理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">55</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">95</td>
+<td style="text-align:center">140</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">120</td>
+<td style="text-align:center">150</td>
+<td style="text-align:center">75</td>
+<td style="text-align:center">85</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">140</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">130</td>
+<td style="text-align:center">65</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">99</td>
+<td style="text-align:center">75</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">99</td>
+<td style="text-align:center">105</td>
+<td style="text-align:center">105</td>
+<td style="text-align:center">85</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">95</td>
+<td style="text-align:center">125</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">95</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>现在就能体现主成分分析的价值了，主成分与指标的关系如下：</p>
+<ol>
+<li>主成分是原始变量的线性组合</li>
+<li>主成分的个数要小于原始变量的个数</li>
+<li>主成分保留了原始变量的大部分信息</li>
+<li>各个主成分互不相关</li>
+</ol>
+<h1 id="PCA的原理"><a href="#PCA的原理" class="headerlink" title="PCA的原理"></a>PCA的原理</h1><h2 id="PCA的几何原理"><a href="#PCA的几何原理" class="headerlink" title="PCA的几何原理"></a>PCA的几何原理</h2><p>要描述如下的原始数据，需要x和y两个指标，如果将坐标轴做个旋转，保留长轴信息舍弃短轴信息，那么就可以用一个指标描述原始数据，在尽量保留信息的情况下，简化了指标。</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2018/pca/pca1.png" alt></p>
+<p>主成分分析的本质就是进行坐标系的旋转，各个主成分就是新坐标系和原坐标系的转换关系。</p>
+<h2 id="PCA的统计学原理"><a href="#PCA的统计学原理" class="headerlink" title="PCA的统计学原理"></a>PCA的统计学原理</h2><p>统计学求解主成分，一般用 <em>最大方差法</em> ，很容易理解，我们原始数据的投影能尽量包含原始数据的信息，这就要求投影分散的最开，反映到公式上就是方差最大。</p>
+<p>有 $p$ 维随机向量 $\textbf{X} = {\left ( X_{1},X_{2},\cdot \cdot \cdot ,X_{p} \right )}’$ ，随机向量 $\textbf{X}$ 的协方差矩阵为 $\Sigma$</p>
+<p>对 $\textbf{X}$ 进行线性变换，形成新的综合变量，用 $\textbf{Y}$ 来表示，即</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{array}{c}
+Y_{1} = u_{11}X_{1} + u_{21}X_{2} + \cdot \cdot \cdot +u_{p1}X_{p} \\
+Y_{2} = u_{12}X_{1} + u_{22}X_{2} + \cdot \cdot \cdot +u_{p2}X_{p} \\
+\cdot \cdot \cdot \cdot \cdot \cdot \\
+Y_{p} = u_{1p}X_{1} + u_{2p}X_{2} + \cdot \cdot \cdot +u_{pp}X_{p}
+\end{array}
+\right.</script><p>目标是 $Y_{i} = \textbf u_{i}’ \textbf X$ 的方差尽可能大，且各 $Y_{i}$ 之间互不相关</p>
+<p>由于 $var(Y_{i}) = var(\textbf u_{i}’ \textbf X) = \textbf u_{i}’ \Sigma \textbf u_{i}$ 可以任意大，问题变的没有意义。所以增加约束条件 $\textbf u_{i}’ \textbf u_{i} = 1 $</p>
+<p>问题变为：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+max  &  \textbf u_{i}' \Sigma \textbf u_{i} \\
+s.t. & \textbf u_{i}' \textbf u_{i} = 1
+\end{cases}</script><p>引入拉格朗日乘子，将求最大方差问题变为求 $f$ 的平稳点</p>
+<script type="math/tex; mode=display">f(u,\lambda ) = {u}'\Sigma u + \lambda(1-{u}'u)</script><p>对 $f$ 求偏导，得</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\frac{\partial f}{\partial u} = 2\Sigma u - 2\lambda u = 0 \\
+\frac{\partial f}{\partial \lambda} = 1 - {u}'u = 0
+\end{cases}</script><p>得</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\Sigma u - \lambda u = 0 \\
+1 - {u}'u = 0
+\end{cases}</script><p>很神奇的是，问题变为求 $\Sigma $ 的特征值</p>
+<p>且 ${u}’ \Sigma u = {u}’ \lambda u = \lambda {u}’ u = \lambda$</p>
+<p>求最大方差变成了求最大特征值</p>
+<p><em>note: 以上是从协方差阵出发，还有从相关阵出发的情况，可以证明原始数据的相关阵就是对原始数据标准化后的协方差阵</em></p>
+<p><em>特征值求解见附录</em></p>
+<h1 id="PCA的R语言实践"><a href="#PCA的R语言实践" class="headerlink" title="PCA的R语言实践"></a>PCA的R语言实践</h1><p><code>USJudgeRatings</code>数据集记录了律师对美国高等法院法官的评分，包括12个维度，数据如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; head(USJudgeRatings)</span><br><span class="line">               CONT INTG DMNR DILG CFMG DECI PREP FAMI ORAL</span><br><span class="line">AARONSON,L.H.   <span class="number">5.7</span>  <span class="number">7.9</span>  <span class="number">7.7</span>  <span class="number">7.3</span>  <span class="number">7.1</span>  <span class="number">7.4</span>  <span class="number">7.1</span>  <span class="number">7.1</span>  <span class="number">7.1</span></span><br><span class="line">ALEXANDER,J.M.  <span class="number">6.8</span>  <span class="number">8.9</span>  <span class="number">8.8</span>  <span class="number">8.5</span>  <span class="number">7.8</span>  <span class="number">8.1</span>  <span class="number">8.0</span>  <span class="number">8.0</span>  <span class="number">7.8</span></span><br><span class="line">ARMENTANO,A.J.  <span class="number">7.2</span>  <span class="number">8.1</span>  <span class="number">7.8</span>  <span class="number">7.8</span>  <span class="number">7.5</span>  <span class="number">7.6</span>  <span class="number">7.5</span>  <span class="number">7.5</span>  <span class="number">7.3</span></span><br><span class="line">BERDON,R.I.     <span class="number">6.8</span>  <span class="number">8.8</span>  <span class="number">8.5</span>  <span class="number">8.8</span>  <span class="number">8.3</span>  <span class="number">8.5</span>  <span class="number">8.7</span>  <span class="number">8.7</span>  <span class="number">8.4</span></span><br><span class="line">BRACKEN,J.J.    <span class="number">7.3</span>  <span class="number">6.4</span>  <span class="number">4.3</span>  <span class="number">6.5</span>  <span class="number">6.0</span>  <span class="number">6.2</span>  <span class="number">5.7</span>  <span class="number">5.7</span>  <span class="number">5.1</span></span><br><span class="line">BURNS,E.B.      <span class="number">6.2</span>  <span class="number">8.8</span>  <span class="number">8.7</span>  <span class="number">8.5</span>  <span class="number">7.9</span>  <span class="number">8.0</span>  <span class="number">8.1</span>  <span class="number">8.0</span>  <span class="number">8.0</span></span><br><span class="line">               WRIT PHYS RTEN</span><br><span class="line">AARONSON,L.H.   <span class="number">7.0</span>  <span class="number">8.3</span>  <span class="number">7.8</span></span><br><span class="line">ALEXANDER,J.M.  <span class="number">7.9</span>  <span class="number">8.5</span>  <span class="number">8.7</span></span><br><span class="line">ARMENTANO,A.J.  <span class="number">7.4</span>  <span class="number">7.9</span>  <span class="number">7.8</span></span><br><span class="line">BERDON,R.I.     <span class="number">8.5</span>  <span class="number">8.8</span>  <span class="number">8.7</span></span><br><span class="line">BRACKEN,J.J.    <span class="number">5.3</span>  <span class="number">5.5</span>  <span class="number">4.8</span></span><br><span class="line">BURNS,E.B.      <span class="number">8.0</span>  <span class="number">8.6</span>  <span class="number">8.6</span></span><br></pre></td></tr></table></figure>
+<p>目标是把12个维度综合成几个主成分，在尽量保留信息的前提下实现降维</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 判断主成分的个数</span></span><br><span class="line">fa.parallel(USJudgeRatings,fa=<span class="string">"pc"</span>,n.iter=<span class="number">100</span>,show.legend=<span class="literal">T</span>,main=<span class="string">"Screen plot with parallel analysis"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2018/pca/pca2.png" alt></p>
+<p>从蓝线看出，在2-&gt;3时，特征值变化放缓；从红线看出，红线以上的特征值对应的主成分是1。所以此例选择1个或2个主成分都是合理的，这里我们选2个主成分</p>
+<p>从以下结果看出：</p>
+<ol>
+<li>R基于相关阵计算主成分</li>
+<li>2个主成分解释了94%的方差</li>
+<li>h2列为主成分对单个变量的解释程度，本例的解释程度都很强</li>
+<li>PC1和PC2的系数是主成分载荷（loadings），指主成分和变量的相关系数</li>
+<li>SS loadings为特征值</li>
+<li>Cumulative Var为主成分对数据的解释程度</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt; pc = principal(USJudgeRatings,</span><br><span class="line">+                nfactors=<span class="number">2</span>,</span><br><span class="line">+                rotate = <span class="string">"none"</span>)</span><br><span class="line">&gt; pc</span><br><span class="line">Principal Components Analysis</span><br><span class="line">Call: principal(r = USJudgeRatings, nfactors = <span class="number">2</span>, rotate = <span class="string">"none"</span>)</span><br><span class="line">Standardized loadings (pattern matrix) based upon correlation matrix</span><br><span class="line">       PC1   PC2   h2     u2 com</span><br><span class="line">CONT -<span class="number">0.01</span>  <span class="number">0.98</span> <span class="number">0.96</span> <span class="number">0.0390</span> <span class="number">1.0</span></span><br><span class="line">INTG  <span class="number">0.92</span> -<span class="number">0.19</span> <span class="number">0.88</span> <span class="number">0.1197</span> <span class="number">1.1</span></span><br><span class="line">DMNR  <span class="number">0.91</span> -<span class="number">0.21</span> <span class="number">0.88</span> <span class="number">0.1229</span> <span class="number">1.1</span></span><br><span class="line">DILG  <span class="number">0.97</span>  <span class="number">0.04</span> <span class="number">0.94</span> <span class="number">0.0599</span> <span class="number">1.0</span></span><br><span class="line">CFMG  <span class="number">0.96</span>  <span class="number">0.18</span> <span class="number">0.96</span> <span class="number">0.0410</span> <span class="number">1.1</span></span><br><span class="line">DECI  <span class="number">0.96</span>  <span class="number">0.13</span> <span class="number">0.94</span> <span class="number">0.0584</span> <span class="number">1.0</span></span><br><span class="line">PREP  <span class="number">0.98</span>  <span class="number">0.03</span> <span class="number">0.97</span> <span class="number">0.0287</span> <span class="number">1.0</span></span><br><span class="line">FAMI  <span class="number">0.98</span>  <span class="number">0.00</span> <span class="number">0.95</span> <span class="number">0.0469</span> <span class="number">1.0</span></span><br><span class="line">ORAL  <span class="number">1.00</span>  <span class="number">0.00</span> <span class="number">0.99</span> <span class="number">0.0091</span> <span class="number">1.0</span></span><br><span class="line">WRIT  <span class="number">0.99</span> -<span class="number">0.03</span> <span class="number">0.98</span> <span class="number">0.0184</span> <span class="number">1.0</span></span><br><span class="line">PHYS  <span class="number">0.89</span>  <span class="number">0.09</span> <span class="number">0.81</span> <span class="number">0.1927</span> <span class="number">1.0</span></span><br><span class="line">RTEN  <span class="number">0.99</span> -<span class="number">0.04</span> <span class="number">0.97</span> <span class="number">0.0258</span> <span class="number">1.0</span></span><br><span class="line">                        PC1  PC2</span><br><span class="line">SS loadings           <span class="number">10.13</span> <span class="number">1.10</span></span><br><span class="line">Proportion Var         <span class="number">0.84</span> <span class="number">0.09</span></span><br><span class="line">Cumulative Var         <span class="number">0.84</span> <span class="number">0.94</span></span><br><span class="line">Proportion Explained   <span class="number">0.90</span> <span class="number">0.10</span></span><br><span class="line">Cumulative Proportion  <span class="number">0.90</span> <span class="number">1.00</span></span><br><span class="line">Mean item complexity =  <span class="number">1</span></span><br><span class="line">Test of the hypothesis that <span class="number">2</span> components are sufficient.</span><br><span class="line">The root mean square of the residuals (RMSR) is  <span class="number">0.03</span></span><br><span class="line"> with the empirical chi square  <span class="number">4.46</span>  with prob &lt;  <span class="number">1</span></span><br><span class="line">Fit based upon off diagonal values = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>以下是主成分得分的系数</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; pc$weights</span><br><span class="line">               PC1          PC2</span><br><span class="line">CONT -<span class="number">0.0009660187</span>  <span class="number">0.887804400</span></span><br><span class="line">INTG  <span class="number">0.0906447029</span> -<span class="number">0.173243022</span></span><br><span class="line">DMNR  <span class="number">0.0901211706</span> -<span class="number">0.188017467</span></span><br><span class="line">DILG  <span class="number">0.0956091216</span>  <span class="number">0.034550076</span></span><br><span class="line">CFMG  <span class="number">0.0950495297</span>  <span class="number">0.160255129</span></span><br><span class="line">DECI  <span class="number">0.0948356759</span>  <span class="number">0.121697038</span></span><br><span class="line">PREP  <span class="number">0.0971962573</span>  <span class="number">0.030672573</span></span><br><span class="line">FAMI  <span class="number">0.0963396287</span> -<span class="number">0.001251621</span></span><br><span class="line">ORAL  <span class="number">0.0982335093</span> -<span class="number">0.003450490</span></span><br><span class="line">WRIT  <span class="number">0.0977160877</span> -<span class="number">0.029862233</span></span><br><span class="line">PHYS  <span class="number">0.0881858990</span>  <span class="number">0.084734541</span></span><br><span class="line">RTEN  <span class="number">0.0973168144</span> -<span class="number">0.037478023</span></span><br></pre></td></tr></table></figure>
+<p>PC1 = -0.0009660187CONT + 0.0906447029INTG +…+ 0.0973168144RTEN<br>PC2 = ……</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="特征值求解示例"><a href="#特征值求解示例" class="headerlink" title="特征值求解示例"></a>特征值求解示例</h2><p>原始矩阵如下，用初等行列变换，求解特征值</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+2 & -1 & 1 \\
+0 & 3 & -1 \\
+2 & 1 & 3 \\
+\end{bmatrix}</script><p>第一步，$\lambda $ 减去对角线元素，其余元素变负</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\lambda - 2 & 1 & -1 \\
+0 & \lambda - 3 & 1 \\
+-2 & -1 & \lambda - 3 \\
+\end{bmatrix}</script><p>第二步，第1列和第3列互换</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+-1 & 1 & \lambda - 2 \\
+1 & \lambda - 3 & 0 \\
+\lambda - 3 & -1 & -2 \\
+\end{bmatrix}</script><p>第三步，第1列乘 $\lambda - 2$ 加到第3列</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+-1 & 1 & 0 \\
+1 & \lambda - 3 & \lambda - 2 \\
+\lambda - 3 & -1 & \lambda^{2} - 5\lambda + 4 \\
+\end{bmatrix}</script><p>第四步，第1列加到第2列</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+-1 & 0 & 0 \\
+1 & \lambda - 2 & \lambda - 2 \\
+\lambda - 3 & \lambda - 4 & \lambda^{2} - 5\lambda + 4 \\
+\end{bmatrix}</script><p>第五步，第2列乘-1加到第3列</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+-1 & 0 & 0 \\
+1 & \lambda - 2 & 0 \\
+\lambda - 3 & \lambda - 4 & (\lambda - 4)(\lambda - 2) \\
+\end{bmatrix}</script><p>第六步，对角线元素乘积等于0</p>
+<script type="math/tex; mode=display">(\lambda - 4)(\lambda - 2)(\lambda - 2) = 0</script><p>特征值 $\lambda_{1} = \lambda_{2} = 2 ,\lambda_{3} = 4$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>喂他一颗糖</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="李昕垚 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="李昕垚 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/pca/" rel="tag"># pca</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/09/2017-10-09-dongpo1/" rel="next" title="和子由渑池怀旧">
+                <i class="fa fa-chevron-left"></i> 和子由渑池怀旧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/15/2019-02-15-prisoner-dilemma/" rel="prev" title="囚徒困境">
+                囚徒困境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="李昕垚">
+            
+              <p class="site-author-name" itemprop="name">李昕垚</p>
+              <p class="site-description motion-element" itemprop="description">分享、进步、坚持</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://www.xinyao.pub/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lixinyao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/slylixinyao?is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yihui.name" title="益辉" target="_blank">益辉</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://reset.pub" title="虎子" target="_blank">虎子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA有什么用？"><span class="nav-number">1.</span> <span class="nav-text">PCA有什么用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA的原理"><span class="nav-number">2.</span> <span class="nav-text">PCA的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA的几何原理"><span class="nav-number">2.1.</span> <span class="nav-text">PCA的几何原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCA的统计学原理"><span class="nav-number">2.2.</span> <span class="nav-text">PCA的统计学原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA的R语言实践"><span class="nav-number">3.</span> <span class="nav-text">PCA的R语言实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征值求解示例"><span class="nav-number">4.1.</span> <span class="nav-text">特征值求解示例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李昕垚</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

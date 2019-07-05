@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="R,时间序列,">
+
+
+
+
+
+  <link rel="alternate" href="http://www.xinyao.pub/atom.xml" title="李昕垚|Xinyao Li" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="背景是最近预估公司的总现金，在这里记录使用ARIMA模型预测的流程">
+<meta name="keywords" content="R,时间序列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言与时间序列分析">
+<meta property="og:url" content="http://www.xinyao.pub/2014/09/19/2014-09-19-r-timeseries1/index.html">
+<meta property="og:site_name" content="李昕垚|Xinyao Li">
+<meta property="og:description" content="背景是最近预估公司的总现金，在这里记录使用ARIMA模型预测的流程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts7.png">
+<meta property="og:updated_time" content="2019-05-11T12:10:47.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R语言与时间序列分析">
+<meta name="twitter:description" content="背景是最近预估公司的总现金，在这里记录使用ARIMA模型预测的流程">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xinyao.pub/2014/09/19/2014-09-19-r-timeseries1/">
+
+
+
+
+
+  <title>R语言与时间序列分析 | 李昕垚|Xinyao Li</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李昕垚|Xinyao Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁寒然后知松柏之后凋也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xinyao.pub/2014/09/19/2014-09-19-r-timeseries1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李昕垚">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李昕垚|Xinyao Li">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">R语言与时间序列分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-19T00:00:00+08:00">
+                2014-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>背景是最近预估公司的总现金，在这里记录使用ARIMA模型预测的流程</p>
+<a id="more"></a>
+<h1 id="原始时间序列"><a href="#原始时间序列" class="headerlink" title="原始时间序列"></a>原始时间序列</h1><h2 id="加载包"><a href="#加载包" class="headerlink" title="加载包"></a>加载包</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(TSA)</span><br><span class="line"><span class="keyword">library</span>(forecast)</span><br><span class="line"><span class="keyword">library</span>(reshape2)</span><br><span class="line"><span class="keyword">library</span>(zoo)</span><br><span class="line"><span class="keyword">library</span>(scales)</span><br><span class="line"><span class="keyword">library</span>(ggplot2)</span><br><span class="line"><span class="keyword">library</span>(plyr)</span><br><span class="line"><span class="keyword">library</span>(xlsx)</span><br></pre></td></tr></table></figure>
+<h2 id="原始时间序列-1"><a href="#原始时间序列-1" class="headerlink" title="原始时间序列"></a>原始时间序列</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setwd(<span class="string">"C:/Users/lixinyao_bj/Desktop/program/增值预估"</span>)</span><br><span class="line">Mxianjin=read.xlsx(<span class="string">"增值现金预估.xlsx"</span>,<span class="number">2</span>,header=<span class="literal">T</span>,encoding=<span class="string">"UTF-8"</span>,stringsAsFactors=<span class="literal">F</span>)</span><br><span class="line">Mxianjin = na.omit(Mxianjin)</span><br><span class="line">MXJts = ts(Mxianjin$现金,frequency=<span class="number">12</span>,start=c(<span class="number">2009</span>,<span class="number">1</span>))</span><br><span class="line">mydata = data.frame(M=index(MXJts),value=melt(MXJts)$value)</span><br><span class="line">ggplot(mydata,aes(M,value)) + geom_line(size=<span class="number">1</span>) + geom_point(size=<span class="number">3</span>) + theme_bw()</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts1.png" alt></p>
+<h1 id="平稳性"><a href="#平稳性" class="headerlink" title="平稳性"></a>平稳性</h1><h2 id="单位根检验"><a href="#单位根检验" class="headerlink" title="单位根检验"></a>单位根检验</h2><p>原假设：非平稳</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; adf.test(MXJts)</span><br><span class="line">Augmented Dickey-Fuller Test</span><br><span class="line">data:  MXJts</span><br><span class="line">Dickey-Fuller = -<span class="number">4.3621</span>, Lag order = <span class="number">4</span>, p-value = <span class="number">0.01</span></span><br><span class="line">alternative hypothesis: stationary</span><br><span class="line">Warning message:</span><br><span class="line">In adf.test(MXJts) : p-value smaller than printed p-value</span><br></pre></td></tr></table></figure>
+<h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MXJtsDiff = diff(MXJts)</span><br><span class="line">mydata2 = data.frame(M=index(MXJtsDiff),value=melt(MXJtsDiff)$value)</span><br></pre></td></tr></table></figure>
+<h3 id="一阶一次差分序列"><a href="#一阶一次差分序列" class="headerlink" title="一阶一次差分序列"></a>一阶一次差分序列</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot(mydata2,aes(M,value)) + geom_line(size=<span class="number">1</span>) + geom_point(size=<span class="number">3</span>) + theme_bw() + ylim(-<span class="number">2</span>*<span class="number">10</span>^<span class="number">8</span>,<span class="number">2</span>*<span class="number">10</span>^<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts2.png" alt></p>
+<h3 id="12阶差分"><a href="#12阶差分" class="headerlink" title="12阶差分"></a>12阶差分</h3><p>差分后效果很好</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MXJtsDiff2 = diff(MXJtsDiff,lag=<span class="number">12</span>)</span><br><span class="line">mydata3 = data.frame(M=index(MXJtsDiff2),value=melt(MXJtsDiff2)$value)</span><br><span class="line">ggplot(mydata3,aes(M,value)) + geom_line(size=<span class="number">1</span>) + geom_point(size=<span class="number">3</span>) + theme_bw() + ylim(-<span class="number">2</span>*<span class="number">10</span>^<span class="number">8</span>,<span class="number">2</span>*<span class="number">10</span>^<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts3.png" alt></p>
+<h1 id="相关性"><a href="#相关性" class="headerlink" title="相关性"></a>相关性</h1><h2 id="ACF"><a href="#ACF" class="headerlink" title="ACF"></a>ACF</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">qacf = <span class="keyword">function</span>(x, conf.level = <span class="number">0.95</span>) &#123;</span><br><span class="line">  ciline = qnorm((<span class="number">1</span> - conf.level)/<span class="number">2</span>)/sqrt(length(x))</span><br><span class="line">  bacf = acf(x,lag.max=<span class="number">30</span>, plot = <span class="literal">FALSE</span>)</span><br><span class="line">  bacfdf = with(bacf, data.frame(lag, acf))</span><br><span class="line">  q = qplot(lag, acf, data = bacfdf, geom = <span class="string">"bar"</span>, stat = <span class="string">"identity"</span>,</span><br><span class="line">             position = <span class="string">"identity"</span>, ylab = <span class="string">"ACF"</span>,width=<span class="number">0.2</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = -ciline, color = <span class="string">"blue"</span>,</span><br><span class="line">                      size = <span class="number">1</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = ciline, color = <span class="string">"blue"</span>,</span><br><span class="line">                      size = <span class="number">1</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = <span class="number">0</span>, color = <span class="string">"red"</span>, size = <span class="number">1</span>)+theme_bw()</span><br><span class="line">  <span class="keyword">return</span>(q)</span><br><span class="line">&#125;</span><br><span class="line">p = qacf(as.vector(MXJtsDiff2))</span><br><span class="line">p</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts4.png" alt></p>
+<h2 id="PACF"><a href="#PACF" class="headerlink" title="PACF"></a>PACF</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">qpacf = <span class="keyword">function</span>(x, conf.level = <span class="number">0.95</span>) &#123;</span><br><span class="line">  ciline = qnorm((<span class="number">1</span> - conf.level)/<span class="number">2</span>)/sqrt(length(x))</span><br><span class="line">  cacf = pacf(x,lag.max=<span class="number">30</span>, plot = <span class="literal">FALSE</span>)</span><br><span class="line">  cacfdf = with(cacf, data.frame(lag, acf))</span><br><span class="line">  q = qplot(lag, acf, data = cacfdf, geom = <span class="string">"bar"</span>, stat = <span class="string">"identity"</span>,</span><br><span class="line">             position = <span class="string">"identity"</span>, ylab = <span class="string">"PACF"</span>,width=<span class="number">0.2</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = -ciline, color = <span class="string">"blue"</span>,</span><br><span class="line">                      size = <span class="number">1</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = ciline, color = <span class="string">"blue"</span>,</span><br><span class="line">                      size = <span class="number">1</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = <span class="number">0</span>, color = <span class="string">"red"</span>, size = <span class="number">1</span>)+theme_bw()</span><br><span class="line">  <span class="keyword">return</span>(q)</span><br><span class="line">&#125;</span><br><span class="line">d = qpacf(as.vector(MXJtsDiff2))</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts5.png" alt></p>
+<h1 id="定阶"><a href="#定阶" class="headerlink" title="定阶"></a>定阶</h1><h2 id="auto辅助定阶"><a href="#auto辅助定阶" class="headerlink" title="auto辅助定阶"></a>auto辅助定阶</h2><pre><code>auto.arima(log(MXJts))
+</code></pre><h2 id="采用bestAIC来定阶"><a href="#采用bestAIC来定阶" class="headerlink" title="采用bestAIC来定阶"></a>采用bestAIC来定阶</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">get.best.arima = <span class="keyword">function</span>(x.ts, maxord = c(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">&#123;</span><br><span class="line">  best.aic = <span class="number">1e8</span></span><br><span class="line">  n = length(x.ts)</span><br><span class="line">  <span class="keyword">for</span> (p <span class="keyword">in</span> <span class="number">0</span>:maxord[<span class="number">1</span>]) <span class="keyword">for</span>(d <span class="keyword">in</span> <span class="number">0</span>:maxord[<span class="number">2</span>]) <span class="keyword">for</span>(q <span class="keyword">in</span> <span class="number">0</span>:maxord[<span class="number">3</span>])</span><br><span class="line">    <span class="keyword">for</span> (P <span class="keyword">in</span> <span class="number">0</span>:maxord[<span class="number">4</span>]) <span class="keyword">for</span>(D <span class="keyword">in</span> <span class="number">0</span>:maxord[<span class="number">5</span>]) <span class="keyword">for</span>(Q <span class="keyword">in</span> <span class="number">0</span>:maxord[<span class="number">6</span>])</span><br><span class="line">    &#123;</span><br><span class="line">      fit = arima(x.ts, order = c(p,d,q),</span><br><span class="line">                   seasonal = list(order=c(P,D,Q),frequency(x.ts)), method = <span class="string">"ML"</span>)</span><br><span class="line">      fit.aic = -<span class="number">2</span> * fit$loglik + (log(n) + <span class="number">1</span>) * length(fit$coef)</span><br><span class="line">      <span class="keyword">if</span> (fit.aic &lt; best.aic)</span><br><span class="line">      &#123;</span><br><span class="line">        best.aic = fit.aic</span><br><span class="line">        best.fit = fit</span><br><span class="line">        best.model = c(p,d,q,P,D,Q)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  list(best.aic, best.fit, best.model)</span><br><span class="line">&#125;</span><br><span class="line">best.arima.elec = get.best.arima(log(MXJts),maxord = c(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">best.fit.elec = best.arima.elec[[<span class="number">2</span>]]</span><br><span class="line">bae = best.arima.elec [[<span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
+<p>结果中的值就是ARIMA(p,d,q,P,D,Q)</p>
+<h1 id="残差检验"><a href="#残差检验" class="headerlink" title="残差检验"></a>残差检验</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">y=Arima(log(MXJts),order=c(bae[<span class="number">1</span>],bae[<span class="number">2</span>],bae[<span class="number">3</span>]),seasonal=c(bae[<span class="number">4</span>],bae[<span class="number">5</span>],bae[<span class="number">6</span>]),method=<span class="string">"ML"</span>)</span><br><span class="line">rstandard(y)</span><br><span class="line">cacf = <span class="keyword">function</span>(x, conf.level = <span class="number">0.95</span>) &#123;</span><br><span class="line">  ciline = qnorm((<span class="number">1</span> - conf.level)/<span class="number">2</span>)/sqrt(length(x))</span><br><span class="line">  bacf = acf(x,lag.max=<span class="number">30</span>, plot = <span class="literal">FALSE</span>)</span><br><span class="line">  bacfdf = with(bacf, data.frame(lag, acf))</span><br><span class="line">  q = qplot(lag, acf, data = bacfdf, geom = <span class="string">"bar"</span>, stat = <span class="string">"identity"</span>,</span><br><span class="line">             position = <span class="string">"identity"</span>, ylab = <span class="string">"SDEACF"</span>,width=<span class="number">0.2</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = -ciline, color = <span class="string">"blue"</span>,</span><br><span class="line">                      size = <span class="number">1</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = ciline, color = <span class="string">"blue"</span>,</span><br><span class="line">                      size = <span class="number">1</span>)</span><br><span class="line">  q = q + geom_hline(yintercept = <span class="number">0</span>, color = <span class="string">"red"</span>, size = <span class="number">1</span>)+theme_bw()</span><br><span class="line">  <span class="keyword">return</span>(q)</span><br><span class="line">&#125;</span><br><span class="line">c = cacf(as.vector(rstandard(y)))</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts6.png" alt></p>
+<h1 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">z = forecast(y,level=c(<span class="number">1</span>,<span class="number">95</span>))</span><br><span class="line">z$fitted</span><br><span class="line">z$residuals</span><br><span class="line">z$mean</span><br><span class="line">exp(z$mean)</span><br><span class="line">exp(z$lower)</span><br><span class="line">exp(z$upper)</span><br><span class="line">yfit = forecast(y,level=c(<span class="number">1</span>,<span class="number">35</span>),h=<span class="number">5</span>)</span><br><span class="line">yfcast = forecast(y,h=<span class="number">5</span>,level=c(<span class="number">1</span>,<span class="number">35</span>))</span><br><span class="line">funggcast = <span class="keyword">function</span>(dn, fit, fcast) &#123;</span><br><span class="line">  <span class="keyword">require</span>(zoo)  <span class="comment">#needed for the 'as.yearmon()' function</span></span><br><span class="line">  <span class="keyword">require</span>(plyr)</span><br><span class="line">  <span class="comment"># Extract Source and Training Data</span></span><br><span class="line">  ds = as.data.frame(dn)</span><br><span class="line">  names(ds) = <span class="string">"observed"</span></span><br><span class="line">  ds$date = as.Date(time(dn))</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Extract the Fitted Values (need to figure out how to grab confidence</span></span><br><span class="line">  <span class="comment"># intervals)</span></span><br><span class="line">  dfit = as.data.frame(exp(yfit$fitted))</span><br><span class="line">  dfit$date = as.Date(time(yfit$fitted))</span><br><span class="line">  names(dfit)[<span class="number">1</span>] = <span class="string">"fitted"</span></span><br><span class="line"></span><br><span class="line">  ds = merge(ds, dfit, all.x = <span class="literal">T</span>)  <span class="comment">#Merge fitted values with source and training data</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Exract the Forecast values and confidence intervals</span></span><br><span class="line">  dfcastn = exp(as.data.frame(yfcast))</span><br><span class="line">  dfcastn$date = as.Date(as.yearmon(row.names(dfcastn)))</span><br><span class="line">  names(dfcastn) = c(<span class="string">"forecast"</span>, <span class="string">"lo1"</span>, <span class="string">"hi1"</span>, <span class="string">"lo35"</span>, <span class="string">"hi35"</span>, <span class="string">"date"</span>)</span><br><span class="line"></span><br><span class="line">  pd &lt;- rbind.fill(ds, dfcastn)  <span class="comment">#final data.frame for use in ggplot</span></span><br><span class="line">  <span class="keyword">return</span>(pd)</span><br><span class="line">&#125;</span><br><span class="line">pd = funggcast(MXJts,yfit,yfcast)</span><br><span class="line">pd[(dim(pd)[<span class="number">1</span>]-<span class="number">4</span>):dim(pd)[<span class="number">1</span>],<span class="number">1</span>] = as.Date(c(<span class="string">"2015-07-01"</span>,<span class="string">"2015-08-01"</span>,<span class="string">"2015-09-01"</span>,<span class="string">"2015-10-01"</span>,<span class="string">"2015-11-01"</span>))</span><br><span class="line">pd[<span class="number">78</span>,<span class="number">4</span>] = pd[<span class="number">78</span>,<span class="number">2</span>]</span><br><span class="line">p1a = ggplot(data = pd,aes(x = date,y = observed))</span><br><span class="line">p1a = p1a + geom_line(aes(y=fitted),col=<span class="string">"firebrick"</span>,size=<span class="number">1</span>) + geom_line(col=<span class="string">"steelblue"</span>,size=<span class="number">1</span>)</span><br><span class="line">p1a + geom_ribbon(aes(ymin=lo35,ymax=hi35),fill=<span class="string">"pink"</span>) + geom_line(aes(y=forecast),col=<span class="string">"black"</span>,size=<span class="number">1</span>) + ylab(<span class="string">"总现金"</span>)+theme_bw()</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2014/ts7.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>喂他一颗糖</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="李昕垚 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="李昕垚 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/时间序列/" rel="tag"># 时间序列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/07/2014-08-07-the-pursuit-of-happiness/" rel="next" title="the pursuit of happiness">
+                <i class="fa fa-chevron-left"></i> the pursuit of happiness
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/10/01/2014-10-01-piechart/" rel="prev" title="ggplot2与饼图">
+                ggplot2与饼图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="李昕垚">
+            
+              <p class="site-author-name" itemprop="name">李昕垚</p>
+              <p class="site-description motion-element" itemprop="description">分享、进步、坚持</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://www.xinyao.pub/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lixinyao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/slylixinyao?is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yihui.name" title="益辉" target="_blank">益辉</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://reset.pub" title="虎子" target="_blank">虎子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原始时间序列"><span class="nav-number">1.</span> <span class="nav-text">原始时间序列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#加载包"><span class="nav-number">1.1.</span> <span class="nav-text">加载包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原始时间序列-1"><span class="nav-number">1.2.</span> <span class="nav-text">原始时间序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平稳性"><span class="nav-number">2.</span> <span class="nav-text">平稳性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单位根检验"><span class="nav-number">2.1.</span> <span class="nav-text">单位根检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差分"><span class="nav-number">2.2.</span> <span class="nav-text">差分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一阶一次差分序列"><span class="nav-number">2.2.1.</span> <span class="nav-text">一阶一次差分序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12阶差分"><span class="nav-number">2.2.2.</span> <span class="nav-text">12阶差分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关性"><span class="nav-number">3.</span> <span class="nav-text">相关性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACF"><span class="nav-number">3.1.</span> <span class="nav-text">ACF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PACF"><span class="nav-number">3.2.</span> <span class="nav-text">PACF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定阶"><span class="nav-number">4.</span> <span class="nav-text">定阶</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#auto辅助定阶"><span class="nav-number">4.1.</span> <span class="nav-text">auto辅助定阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采用bestAIC来定阶"><span class="nav-number">4.2.</span> <span class="nav-text">采用bestAIC来定阶</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#残差检验"><span class="nav-number">5.</span> <span class="nav-text">残差检验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预测"><span class="nav-number">6.</span> <span class="nav-text">预测</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李昕垚</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="R,ggplot2,条形图,">
+
+
+
+
+
+  <link rel="alternate" href="http://www.xinyao.pub/atom.xml" title="李昕垚|Xinyao Li" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="最近一段时间，准备把ggplot2系统的学习一下，避免做事儿的时候还要临时抱佛脚，临时看help。学习手册就是大家熟知的入门级的《R Graphics Cookbook》，基本上就是在这里记录一下自己的学习历程，并且加入一些自己的理解。那我们就从最简单的条形图开始ggplot2的学习之旅吧！">
+<meta name="keywords" content="R,ggplot2,条形图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ggplot2与条形图">
+<meta property="og:url" content="http://www.xinyao.pub/2015/09/25/2015-09-25-ggplot2-barchart/index.html">
+<meta property="og:site_name" content="李昕垚|Xinyao Li">
+<meta property="og:description" content="最近一段时间，准备把ggplot2系统的学习一下，避免做事儿的时候还要临时抱佛脚，临时看help。学习手册就是大家熟知的入门级的《R Graphics Cookbook》，基本上就是在这里记录一下自己的学习历程，并且加入一些自己的理解。那我们就从最简单的条形图开始ggplot2的学习之旅吧！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart9.png">
+<meta property="og:updated_time" content="2019-05-11T12:19:42.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ggplot2与条形图">
+<meta name="twitter:description" content="最近一段时间，准备把ggplot2系统的学习一下，避免做事儿的时候还要临时抱佛脚，临时看help。学习手册就是大家熟知的入门级的《R Graphics Cookbook》，基本上就是在这里记录一下自己的学习历程，并且加入一些自己的理解。那我们就从最简单的条形图开始ggplot2的学习之旅吧！">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xinyao.pub/2015/09/25/2015-09-25-ggplot2-barchart/">
+
+
+
+
+
+  <title>ggplot2与条形图 | 李昕垚|Xinyao Li</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李昕垚|Xinyao Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁寒然后知松柏之后凋也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xinyao.pub/2015/09/25/2015-09-25-ggplot2-barchart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李昕垚">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李昕垚|Xinyao Li">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ggplot2与条形图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-25T00:00:00+08:00">
+                2015-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近一段时间，准备把ggplot2系统的学习一下，避免做事儿的时候还要临时抱佛脚，临时看help。学习手册就是大家熟知的入门级的《R Graphics Cookbook》，基本上就是在这里记录一下自己的学习历程，并且加入一些自己的理解。那我们就从最简单的条形图开始ggplot2的学习之旅吧！</p>
+<a id="more"></a>
+<p>条形图分为以下几类：</p>
+<ol>
+<li>简单条形图</li>
+<li>分组条形图</li>
+<li>堆积条形图</li>
+<li>百分比堆积条形图</li>
+<li>克利夫兰点图</li>
+</ol>
+<p>接下来我们就开始详细介绍，先把该加载的包都加上</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(ggplot2)</span><br><span class="line"><span class="keyword">library</span>(gcookbook)</span><br></pre></td></tr></table></figure>
+<h1 id="简单条形图"><a href="#简单条形图" class="headerlink" title="简单条形图"></a>简单条形图</h1><p>简单条形图分为两类，一个是按数值统计的，一个是按数量统计的。</p>
+<h2 id="按数值统计"><a href="#按数值统计" class="headerlink" title="按数值统计"></a>按数值统计</h2><p>以BOD数据集为例，一列是<code>Time</code>，一列是<code>demand</code>，做条形图</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; BOD</span><br><span class="line">  Time demand</span><br><span class="line"><span class="number">1</span>    <span class="number">1</span>    <span class="number">8.3</span></span><br><span class="line"><span class="number">2</span>    <span class="number">2</span>   <span class="number">10.3</span></span><br><span class="line"><span class="number">3</span>    <span class="number">3</span>   <span class="number">19.0</span></span><br><span class="line"><span class="number">4</span>    <span class="number">4</span>   <span class="number">16.0</span></span><br><span class="line"><span class="number">5</span>    <span class="number">5</span>   <span class="number">15.6</span></span><br><span class="line"><span class="number">6</span>    <span class="number">7</span>   <span class="number">19.8</span></span><br><span class="line">&gt; ggplot(BOD,aes(factor(Time),demand)) + geom_bar()</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart1.png" alt></p>
+<p>从大到小排序，且加数字标签</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ggplot(BOD,aes(reorder(factor(Time),-demand),demand))  + geom_bar(stat=<span class="string">"identity"</span>) +</span><br><span class="line">+   geom_text(aes(label=demand),vjust=<span class="number">1.5</span>,color=<span class="string">"white"</span>,size=<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart2.png" alt></p>
+<h2 id="按数量统计"><a href="#按数量统计" class="headerlink" title="按数量统计"></a>按数量统计</h2><p>以diamonds数据集为例，格式如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; head(diamonds)</span><br><span class="line">  carat       cut color clarity depth table price    x    y    z</span><br><span class="line"><span class="number">1</span>  <span class="number">0.23</span>     Ideal     E     SI2  <span class="number">61.5</span>    <span class="number">55</span>   <span class="number">326</span> <span class="number">3.95</span> <span class="number">3.98</span> <span class="number">2.43</span></span><br><span class="line"><span class="number">2</span>  <span class="number">0.21</span>   Premium     E     SI1  <span class="number">59.8</span>    <span class="number">61</span>   <span class="number">326</span> <span class="number">3.89</span> <span class="number">3.84</span> <span class="number">2.31</span></span><br><span class="line"><span class="number">3</span>  <span class="number">0.23</span>      Good     E     VS1  <span class="number">56.9</span>    <span class="number">65</span>   <span class="number">327</span> <span class="number">4.05</span> <span class="number">4.07</span> <span class="number">2.31</span></span><br><span class="line"><span class="number">4</span>  <span class="number">0.29</span>   Premium     I     VS2  <span class="number">62.4</span>    <span class="number">58</span>   <span class="number">334</span> <span class="number">4.20</span> <span class="number">4.23</span> <span class="number">2.63</span></span><br><span class="line"><span class="number">5</span>  <span class="number">0.31</span>      Good     J     SI2  <span class="number">63.3</span>    <span class="number">58</span>   <span class="number">335</span> <span class="number">4.34</span> <span class="number">4.35</span> <span class="number">2.75</span></span><br><span class="line"><span class="number">6</span>  <span class="number">0.24</span> Very Good     J    VVS2  <span class="number">62.8</span>    <span class="number">57</span>   <span class="number">336</span> <span class="number">3.94</span> <span class="number">3.96</span> <span class="number">2.48</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ggplot(diamonds,aes(x=cut)) + geom_bar(stat=<span class="string">"bin"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart3.png" alt></p>
+<h1 id="分组条形图"><a href="#分组条形图" class="headerlink" title="分组条形图"></a>分组条形图</h1><h2 id="普通分组条形图"><a href="#普通分组条形图" class="headerlink" title="普通分组条形图"></a>普通分组条形图</h2><p>以cabbage_exp数据集为例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; cabbage_exp</span><br><span class="line">  Cultivar Date Weight        sd  n         se</span><br><span class="line"><span class="number">1</span>      c39  d16   <span class="number">3.18</span> <span class="number">0.9566144</span> <span class="number">10</span> <span class="number">0.30250803</span></span><br><span class="line"><span class="number">2</span>      c39  d20   <span class="number">2.80</span> <span class="number">0.2788867</span> <span class="number">10</span> <span class="number">0.08819171</span></span><br><span class="line"><span class="number">3</span>      c39  d21   <span class="number">2.74</span> <span class="number">0.9834181</span> <span class="number">10</span> <span class="number">0.31098410</span></span><br><span class="line"><span class="number">4</span>      c52  d16   <span class="number">2.26</span> <span class="number">0.4452215</span> <span class="number">10</span> <span class="number">0.14079141</span></span><br><span class="line"><span class="number">5</span>      c52  d20   <span class="number">3.11</span> <span class="number">0.7908505</span> <span class="number">10</span> <span class="number">0.25008887</span></span><br><span class="line"><span class="number">6</span>      c52  d21   <span class="number">1.47</span> <span class="number">0.2110819</span> <span class="number">10</span> <span class="number">0.06674995</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; ggplot(cabbage_exp,aes(Date,Weight,fill=Cultivar)) +</span><br><span class="line">+   geom_bar(stat=<span class="string">"identity"</span>,position=<span class="string">"dodge"</span>) +</span><br><span class="line">+   scale_fill_brewer(palette=<span class="string">"Pastel1"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart4.png" alt></p>
+<h2 id="正负分组条形图"><a href="#正负分组条形图" class="headerlink" title="正负分组条形图"></a>正负分组条形图</h2><p>设置一列pos为正负条形的位置</p>
+<p>以csub数据集为例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; csub = subset(climate,Source==<span class="string">"Berkeley"</span>&amp;Year&gt;=<span class="number">1900</span>)</span><br><span class="line">&gt; csub$pos = csub$Anomaly10y&gt;=<span class="number">0</span></span><br><span class="line">&gt; head(csub)</span><br><span class="line">      Source Year Anomaly1y Anomaly5y Anomaly10y Unc10y   pos</span><br><span class="line"><span class="number">101</span> Berkeley <span class="number">1900</span>        <span class="literal">NA</span>        <span class="literal">NA</span>     -<span class="number">0.171</span>  <span class="number">0.108</span> <span class="literal">FALSE</span></span><br><span class="line"><span class="number">102</span> Berkeley <span class="number">1901</span>        <span class="literal">NA</span>        <span class="literal">NA</span>     -<span class="number">0.162</span>  <span class="number">0.109</span> <span class="literal">FALSE</span></span><br><span class="line"><span class="number">103</span> Berkeley <span class="number">1902</span>        <span class="literal">NA</span>        <span class="literal">NA</span>     -<span class="number">0.177</span>  <span class="number">0.108</span> <span class="literal">FALSE</span></span><br><span class="line"><span class="number">104</span> Berkeley <span class="number">1903</span>        <span class="literal">NA</span>        <span class="literal">NA</span>     -<span class="number">0.199</span>  <span class="number">0.104</span> <span class="literal">FALSE</span></span><br><span class="line"><span class="number">105</span> Berkeley <span class="number">1904</span>        <span class="literal">NA</span>        <span class="literal">NA</span>     -<span class="number">0.223</span>  <span class="number">0.105</span> <span class="literal">FALSE</span></span><br><span class="line"><span class="number">106</span> Berkeley <span class="number">1905</span>        <span class="literal">NA</span>        <span class="literal">NA</span>     -<span class="number">0.241</span>  <span class="number">0.107</span> <span class="literal">FALSE</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot(csub,aes(Year,Anomaly10y,fill=pos)) +</span><br><span class="line">  geom_bar(stat=<span class="string">"identity"</span>,position=<span class="string">"identity"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart7.png" alt></p>
+<h1 id="堆积条形图"><a href="#堆积条形图" class="headerlink" title="堆积条形图"></a>堆积条形图</h1><p>还是以cabbge_exp数据集为例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; cabbage_exp</span><br><span class="line">  Cultivar Date Weight        sd  n         se</span><br><span class="line"><span class="number">1</span>      c39  d16   <span class="number">3.18</span> <span class="number">0.9566144</span> <span class="number">10</span> <span class="number">0.30250803</span></span><br><span class="line"><span class="number">2</span>      c39  d20   <span class="number">2.80</span> <span class="number">0.2788867</span> <span class="number">10</span> <span class="number">0.08819171</span></span><br><span class="line"><span class="number">3</span>      c39  d21   <span class="number">2.74</span> <span class="number">0.9834181</span> <span class="number">10</span> <span class="number">0.31098410</span></span><br><span class="line"><span class="number">4</span>      c52  d16   <span class="number">2.26</span> <span class="number">0.4452215</span> <span class="number">10</span> <span class="number">0.14079141</span></span><br><span class="line"><span class="number">5</span>      c52  d20   <span class="number">3.11</span> <span class="number">0.7908505</span> <span class="number">10</span> <span class="number">0.25008887</span></span><br><span class="line"><span class="number">6</span>      c52  d21   <span class="number">1.47</span> <span class="number">0.2110819</span> <span class="number">10</span> <span class="number">0.06674995</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; ggplot(cabbage_exp,aes(Date,Weight,fill=Cultivar)) +</span><br><span class="line">+   geom_bar(stat=<span class="string">"identity"</span>,position=<span class="string">"stack"</span>,width=<span class="number">0.7</span>) +</span><br><span class="line">+   scale_fill_brewer(palette=<span class="string">"Pastel1"</span>) +</span><br><span class="line">+   guides(fill=guide_legend(reverse=<span class="literal">TRUE</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart5.png" alt></p>
+<p>上个例子用<code>reverse=TRUE</code>来更改legend的顺序，现在用<code>order=desc</code>来解决</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">library</span>(plyr)</span><br><span class="line">&gt; ggplot(cabbage_exp,aes(Date,Weight,fill=Cultivar,order=desc(Cultivar))) +</span><br><span class="line">+   geom_bar(stat=<span class="string">"identity"</span>,position=<span class="string">"stack"</span>,width=<span class="number">0.7</span>) +</span><br><span class="line">+   scale_fill_brewer(palette=<span class="string">"Pastel1"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart6.png" alt></p>
+<h1 id="百分比堆积条形图"><a href="#百分比堆积条形图" class="headerlink" title="百分比堆积条形图"></a>百分比堆积条形图</h1><p>以ce数据集为例，增加百分比列</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">library</span>(plyr)</span><br><span class="line">&gt; ce = ddply(cabbage_exp,<span class="string">"Date"</span>,transform,</span><br><span class="line">+             percent_weight = Weight/sum(Weight) * <span class="number">100</span>)</span><br><span class="line">&gt; head(ce)</span><br><span class="line">  Cultivar Date Weight        sd  n         se percent_weight</span><br><span class="line"><span class="number">1</span>      c39  d16   <span class="number">3.18</span> <span class="number">0.9566144</span> <span class="number">10</span> <span class="number">0.30250803</span>       <span class="number">58.45588</span></span><br><span class="line"><span class="number">2</span>      c52  d16   <span class="number">2.26</span> <span class="number">0.4452215</span> <span class="number">10</span> <span class="number">0.14079141</span>       <span class="number">41.54412</span></span><br><span class="line"><span class="number">3</span>      c39  d20   <span class="number">2.80</span> <span class="number">0.2788867</span> <span class="number">10</span> <span class="number">0.08819171</span>       <span class="number">47.37733</span></span><br><span class="line"><span class="number">4</span>      c52  d20   <span class="number">3.11</span> <span class="number">0.7908505</span> <span class="number">10</span> <span class="number">0.25008887</span>       <span class="number">52.62267</span></span><br><span class="line"><span class="number">5</span>      c39  d21   <span class="number">2.74</span> <span class="number">0.9834181</span> <span class="number">10</span> <span class="number">0.31098410</span>       <span class="number">65.08314</span></span><br><span class="line"><span class="number">6</span>      c52  d21   <span class="number">1.47</span> <span class="number">0.2110819</span> <span class="number">10</span> <span class="number">0.06674995</span>       <span class="number">34.91686</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot(ce,aes(x=Date,y=percent_weight,fill=Cultivar)) +</span><br><span class="line">  geom_bar(stat=<span class="string">"identity"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart8.png" alt></p>
+<h1 id="克利夫兰点图"><a href="#克利夫兰点图" class="headerlink" title="克利夫兰点图"></a>克利夫兰点图</h1><p>Cleveland点图是条形图的变种，有时候比条形图更清晰，以tophit数据集为例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; tophit = tophitters2001[<span class="number">1</span>:<span class="number">25</span>, ]</span><br><span class="line">&gt; tophit = tophit[, c(<span class="string">"name"</span>,<span class="string">"lg"</span>,<span class="string">"avg"</span>)]</span><br><span class="line">&gt; nameorder = tophit$name[order(tophit$lg,tophit$avg)]</span><br><span class="line">&gt; tophit$name = factor(tophit$name,levels=nameorder)</span><br><span class="line">&gt; head(tophit)</span><br><span class="line">            name lg    avg</span><br><span class="line"><span class="number">1</span>   Larry Walker NL <span class="number">0.3501</span></span><br><span class="line"><span class="number">2</span>  Ichiro Suzuki AL <span class="number">0.3497</span></span><br><span class="line"><span class="number">3</span>   Jason Giambi AL <span class="number">0.3423</span></span><br><span class="line"><span class="number">4</span> Roberto Alomar AL <span class="number">0.3357</span></span><br><span class="line"><span class="number">5</span>    Todd Helton NL <span class="number">0.3356</span></span><br><span class="line"><span class="number">6</span>    Moises Alou NL <span class="number">0.3314</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; ggplot(tophit,aes(x=avg,y=name)) +</span><br><span class="line">+   geom_segment(aes(yend=name),xend=<span class="number">0</span>,colour=<span class="string">"grey50"</span>) +</span><br><span class="line">+   geom_point(size=<span class="number">3</span>,aes(colour=lg)) +</span><br><span class="line">+   scale_colour_brewer(palette=<span class="string">"Set1"</span>,limits=c(<span class="string">"NL"</span>,<span class="string">"AL"</span>),guide=<span class="literal">FALSE</span>) +</span><br><span class="line">+   theme_bw() +</span><br><span class="line">+   theme(panel.grid.major.y = element_blank()) +</span><br><span class="line">+   facet_grid(lg ~ .,scales=<span class="string">"free_y"</span>,space=<span class="string">"free_y"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2015/barchart9.png" alt></p>
+<h1 id="小贴士"><a href="#小贴士" class="headerlink" title="小贴士"></a>小贴士</h1><p>以后在小贴士这个栏目里，会发布几个平时不太注意到的函数或者是小方法，苦逼的生活就是 <em>“哎呀，太TM累了，看会儿R手册歇会儿吧”</em>。</p>
+<h2 id="example-函数"><a href="#example-函数" class="headerlink" title="example()函数"></a>example()函数</h2><p><code>example()</code>可以允许例子的代码，比如<code>example(&quot;seq&quot;)</code>,<code>example(&quot;ggplot2&quot;)</code>等</p>
+<h2 id="help-search-函数"><a href="#help-search-函数" class="headerlink" title="help.search()函数"></a>help.search()函数</h2><p><code>help.search()</code>可以查自己不太确定的函数，比如想做个时间序列分析，可又忘了怎么做了，可以试着<code>help.search(&quot;time series analysis&quot;)</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>喂他一颗糖</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="李昕垚 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="李昕垚 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/ggplot2/" rel="tag"># ggplot2</a>
+          
+            <a href="/tags/条形图/" rel="tag"># 条形图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/03/2015-05-03-bad-things/" rel="next" title="噩耗来袭">
+                <i class="fa fa-chevron-left"></i> 噩耗来袭
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/10/2015-10-10-huangshan/" rel="prev" title="黄山归来不看岳">
+                黄山归来不看岳 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="李昕垚">
+            
+              <p class="site-author-name" itemprop="name">李昕垚</p>
+              <p class="site-description motion-element" itemprop="description">分享、进步、坚持</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://www.xinyao.pub/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lixinyao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/slylixinyao?is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yihui.name" title="益辉" target="_blank">益辉</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://reset.pub" title="虎子" target="_blank">虎子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单条形图"><span class="nav-number">1.</span> <span class="nav-text">简单条形图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#按数值统计"><span class="nav-number">1.1.</span> <span class="nav-text">按数值统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按数量统计"><span class="nav-number">1.2.</span> <span class="nav-text">按数量统计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组条形图"><span class="nav-number">2.</span> <span class="nav-text">分组条形图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通分组条形图"><span class="nav-number">2.1.</span> <span class="nav-text">普通分组条形图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正负分组条形图"><span class="nav-number">2.2.</span> <span class="nav-text">正负分组条形图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆积条形图"><span class="nav-number">3.</span> <span class="nav-text">堆积条形图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#百分比堆积条形图"><span class="nav-number">4.</span> <span class="nav-text">百分比堆积条形图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#克利夫兰点图"><span class="nav-number">5.</span> <span class="nav-text">克利夫兰点图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小贴士"><span class="nav-number">6.</span> <span class="nav-text">小贴士</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#example-函数"><span class="nav-number">6.1.</span> <span class="nav-text">example()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#help-search-函数"><span class="nav-number">6.2.</span> <span class="nav-text">help.search()函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李昕垚</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="城市,人口,">
+
+
+
+
+
+  <link rel="alternate" href="http://www.xinyao.pub/atom.xml" title="李昕垚|Xinyao Li" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="用城市的 常住人口 衡量 人口增长 会有很大缺陷。拿北京举例，没有居住证的人口不会统计到常住人口里，2015年北京的常住人口2100万，实际生活在北京的人口估计在3000万左右。这些人一样是在北京消费的。移动电话出账用户数 是有电话账单的用户数，可以很好的修正人口增长，但是数据无法获得（需要三家运营商的数据），所以折衷选择 移动电话用户数 (这样会无可避免的带入 僵尸户 等影响数据的准确性)">
+<meta name="keywords" content="城市,人口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="城市人口增长得分">
+<meta property="og:url" content="http://www.xinyao.pub/2016/12/27/2016-12-27-city-population/index.html">
+<meta property="og:site_name" content="李昕垚|Xinyao Li">
+<meta property="og:description" content="用城市的 常住人口 衡量 人口增长 会有很大缺陷。拿北京举例，没有居住证的人口不会统计到常住人口里，2015年北京的常住人口2100万，实际生活在北京的人口估计在3000万左右。这些人一样是在北京消费的。移动电话出账用户数 是有电话账单的用户数，可以很好的修正人口增长，但是数据无法获得（需要三家运营商的数据），所以折衷选择 移动电话用户数 (这样会无可避免的带入 僵尸户 等影响数据的准确性)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/resident_population.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/mobile_users.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/population_rank.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/primary_students.png">
+<meta property="og:updated_time" content="2019-05-12T12:48:10.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="城市人口增长得分">
+<meta name="twitter:description" content="用城市的 常住人口 衡量 人口增长 会有很大缺陷。拿北京举例，没有居住证的人口不会统计到常住人口里，2015年北京的常住人口2100万，实际生活在北京的人口估计在3000万左右。这些人一样是在北京消费的。移动电话出账用户数 是有电话账单的用户数，可以很好的修正人口增长，但是数据无法获得（需要三家运营商的数据），所以折衷选择 移动电话用户数 (这样会无可避免的带入 僵尸户 等影响数据的准确性)">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/resident_population.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xinyao.pub/2016/12/27/2016-12-27-city-population/">
+
+
+
+
+
+  <title>城市人口增长得分 | 李昕垚|Xinyao Li</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李昕垚|Xinyao Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁寒然后知松柏之后凋也</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xinyao.pub/2016/12/27/2016-12-27-city-population/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李昕垚">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李昕垚|Xinyao Li">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">城市人口增长得分</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-27T00:00:00+08:00">
+                2016-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/经济学/" itemprop="url" rel="index">
+                    <span itemprop="name">经济学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>用城市的 <strong>常住人口</strong> 衡量 <strong>人口增长</strong> 会有很大缺陷。拿北京举例，没有居住证的人口不会统计到常住人口里，2015年北京的常住人口2100万，实际生活在北京的人口估计在3000万左右。这些人一样是在北京消费的。<strong>移动电话出账用户数</strong> 是有电话账单的用户数，可以很好的修正人口增长，但是数据无法获得（需要三家运营商的数据），所以折衷选择 <strong>移动电话用户数</strong> (这样会无可避免的带入 <strong>僵尸户</strong> 等影响数据的准确性)</p>
+<a id="more"></a>
+<h1 id="常住人口"><a href="#常住人口" class="headerlink" title="常住人口"></a>常住人口</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/resident_population.png" alt></p>
+<h1 id="移动电话用户数"><a href="#移动电话用户数" class="headerlink" title="移动电话用户数"></a>移动电话用户数</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/mobile_users.png" alt></p>
+<h1 id="人口增长得分"><a href="#人口增长得分" class="headerlink" title="人口增长得分"></a>人口增长得分</h1><p>人口增长得分是将 <em>常住人口增长率</em> 和 <em>移动电话用户增长率</em> 进行标准化，加权平均算出每个城市的得分，再将得分排序，最后得到 <strong>人口增长得分</strong>。<em>人口增长得分</em> 越高，代表人口增长的越多。</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/population_rank.png" alt></p>
+<h1 id="合肥人口增长的动力"><a href="#合肥人口增长的动力" class="headerlink" title="合肥人口增长的动力"></a>合肥人口增长的动力</h1><p>我们看到合肥的人口增长得分最高，很自然的想到合肥 <em>火箭般上涨的房价</em> 。那么合肥的人口为什么增长迅速呢，动力是什么？这个是我们接下来想要尝试解答的问题。</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei1.png" alt></p>
+<p>上图看出，合肥 <em>常住人口</em> 的大幅增长主要有两个时期，2010年 和 2011年 。</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei2.png" alt></p>
+<p>上图看出，合肥 <em>移动电话用户</em> 的大幅增长也是在 2010年 和 2011年 发生 。说明合肥的人口增长的主要时期就是 2010~2011年 。</p>
+<ul>
+<li>先看2011年：2011年合肥 <em>常住人口</em> 同比增长180万人，<em>移动电话用户</em> 同比增长170万人，数据非常吻合。原因是2011年地级市巢湖拆分，县级市巢湖和庐江县并入了合肥。2010年全国人口普查数据显示，县级市巢湖78万人，庐江县97万人，加起来一共175万人。可以说</li>
+</ul>
+<blockquote>
+<p>2011年合肥人口增长源于并入了县级巢湖市和庐江县</p>
+</blockquote>
+<ul>
+<li>再看2010年：2010年合肥GDP同比增长28.5%，增幅巨大</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei3.png" alt></p>
+<p>2010年合肥第三产业GDP同比增长25%，增幅巨大</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei4.png" alt></p>
+<p>但是2010年合肥第三产业占比是下降的，所以经济增长的推动不是第三产业</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei5.png" alt></p>
+<p>2010年拉动合肥经济增长的是 <em>第二产业</em> 。2012年可以看成是合肥经济发展的分水岭，2012年以前合肥靠工业拉动，2012年以后合肥向服务业转型。</p>
+<p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hefei6.png" alt></p>
+<p>这样解释或许合理，2010年合肥工业增长迅速，安徽其他地市的人选择走出家门，到合肥打工，导致合肥2010年人口增长迅速。但是总体来说，安徽是个劳务输出大省，常住人口比户籍人口少800万左右，大部分的人到了比合肥更有竞争力的上海。合肥需要大力发展，增加竞争力，抢回那些用脚投票的人。</p>
+<h1 id="小学生在校数"><a href="#小学生在校数" class="headerlink" title="小学生在校数"></a>小学生在校数</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/primary_students.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>喂他一颗糖</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="李昕垚 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="李昕垚 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/城市/" rel="tag"># 城市</a>
+          
+            <a href="/tags/人口/" rel="tag"># 人口</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/16/2016-12-16-svm/" rel="next" title="R语言与svm分类">
+                <i class="fa fa-chevron-left"></i> R语言与svm分类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/04/2017-01-04-house-price/" rel="prev" title="各城市房价的影响因素">
+                各城市房价的影响因素 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="李昕垚">
+            
+              <p class="site-author-name" itemprop="name">李昕垚</p>
+              <p class="site-description motion-element" itemprop="description">分享、进步、坚持</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="http://www.xinyao.pub/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lixinyao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/slylixinyao?is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yihui.name" title="益辉" target="_blank">益辉</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://reset.pub" title="虎子" target="_blank">虎子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常住人口"><span class="nav-number">1.</span> <span class="nav-text">常住人口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动电话用户数"><span class="nav-number">2.</span> <span class="nav-text">移动电话用户数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#人口增长得分"><span class="nav-number">3.</span> <span class="nav-text">人口增长得分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合肥人口增长的动力"><span class="nav-number">4.</span> <span class="nav-text">合肥人口增长的动力</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小学生在校数"><span class="nav-number">5.</span> <span class="nav-text">小学生在校数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李昕垚</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
