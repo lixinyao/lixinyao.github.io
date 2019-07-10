@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李昕垚|Xinyao Li">
 <meta property="og:description" content="很长时间没写博客，居然把提交代码忘了，好在内力深厚，又想起来了，在此记录一下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-27T04:24:06.604Z">
+<meta property="og:updated_time" content="2019-07-10T12:21:32.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客push代码">
 <meta name="twitter:description" content="很长时间没写博客，居然把提交代码忘了，好在内力深厚，又想起来了，在此记录一下">
@@ -377,6 +377,8 @@
         <p>很长时间没写博客，居然把提交代码忘了，好在内力深厚，又想起来了，在此记录一下</p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g</span><br><span class="line">cp -R public/* .deploy/lixinyao.github.io/</span><br><span class="line">cd .deploy/lixinyao.github.io/</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update reason&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+<p>新的博客做了一些修改，会自动生成<code>.deploy_git</code>文件夹，里面存的就是<code>public</code>文件夹的内容，不用再<code>cp -R</code>拷贝了。上述命令改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g</span><br><span class="line">cd .deploy_git</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update reason&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
 <p>atom编辑器预览markdown，<code>shift+control+M</code>。预览公式的话，用 <code>shift+control+X</code></p>
 <p>atom编辑器代码优化，<code>atom-beautify</code>包，可以对各种语言进行格式优化，对于R语言，其实还是调用的<code>formatR</code></p>
 

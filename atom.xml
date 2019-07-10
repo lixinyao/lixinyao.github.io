@@ -193,9 +193,9 @@
     <link href="http://www.xinyao.pub/2017/09/14/2017-09-14-blog-push-code/"/>
     <id>http://www.xinyao.pub/2017/09/14/2017-09-14-blog-push-code/</id>
     <published>2017-09-13T16:00:00.000Z</published>
-    <updated>2019-06-27T04:24:06.604Z</updated>
+    <updated>2019-07-10T12:21:32.885Z</updated>
     
-    <content type="html"><![CDATA[<p>很长时间没写博客，居然把提交代码忘了，好在内力深厚，又想起来了，在此记录一下</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g</span><br><span class="line">cp -R public/* .deploy/lixinyao.github.io/</span><br><span class="line">cd .deploy/lixinyao.github.io/</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update reason&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure><p>atom编辑器预览markdown，<code>shift+control+M</code>。预览公式的话，用 <code>shift+control+X</code></p><p>atom编辑器代码优化，<code>atom-beautify</code>包，可以对各种语言进行格式优化，对于R语言，其实还是调用的<code>formatR</code></p>]]></content>
+    <content type="html"><![CDATA[<p>很长时间没写博客，居然把提交代码忘了，好在内力深厚，又想起来了，在此记录一下</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g</span><br><span class="line">cp -R public/* .deploy/lixinyao.github.io/</span><br><span class="line">cd .deploy/lixinyao.github.io/</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update reason&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure><p>新的博客做了一些修改，会自动生成<code>.deploy_git</code>文件夹，里面存的就是<code>public</code>文件夹的内容，不用再<code>cp -R</code>拷贝了。上述命令改为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g</span><br><span class="line">cd .deploy_git</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update reason&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure><p>atom编辑器预览markdown，<code>shift+control+M</code>。预览公式的话，用 <code>shift+control+X</code></p><p>atom编辑器代码优化，<code>atom-beautify</code>包，可以对各种语言进行格式优化，对于R语言，其实还是调用的<code>formatR</code></p>]]></content>
     
     <summary type="html">
     
@@ -416,9 +416,9 @@
       <category term="经济学" scheme="http://www.xinyao.pub/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
     
     
-      <category term="城市" scheme="http://www.xinyao.pub/tags/%E5%9F%8E%E5%B8%82/"/>
-    
       <category term="人口" scheme="http://www.xinyao.pub/tags/%E4%BA%BA%E5%8F%A3/"/>
+    
+      <category term="城市" scheme="http://www.xinyao.pub/tags/%E5%9F%8E%E5%B8%82/"/>
     
   </entry>
   
