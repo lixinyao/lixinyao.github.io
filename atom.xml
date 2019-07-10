@@ -34,11 +34,11 @@
       <category term="文学" scheme="http://www.xinyao.pub/categories/%E6%96%87%E5%AD%A6/"/>
     
     
-      <category term="文学" scheme="http://www.xinyao.pub/tags/%E6%96%87%E5%AD%A6/"/>
-    
       <category term="三国" scheme="http://www.xinyao.pub/tags/%E4%B8%89%E5%9B%BD/"/>
     
       <category term="何进" scheme="http://www.xinyao.pub/tags/%E4%BD%95%E8%BF%9B/"/>
+    
+      <category term="文学" scheme="http://www.xinyao.pub/tags/%E6%96%87%E5%AD%A6/"/>
     
   </entry>
   
@@ -132,11 +132,11 @@
       <category term="文学" scheme="http://www.xinyao.pub/categories/%E6%96%87%E5%AD%A6/"/>
     
     
+      <category term="文学" scheme="http://www.xinyao.pub/tags/%E6%96%87%E5%AD%A6/"/>
+    
       <category term="苏轼" scheme="http://www.xinyao.pub/tags/%E8%8B%8F%E8%BD%BC/"/>
     
       <category term="诗词" scheme="http://www.xinyao.pub/tags/%E8%AF%97%E8%AF%8D/"/>
-    
-      <category term="文学" scheme="http://www.xinyao.pub/tags/%E6%96%87%E5%AD%A6/"/>
     
   </entry>
   
@@ -252,9 +252,9 @@
       <category term="生活" scheme="http://www.xinyao.pub/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="生活" scheme="http://www.xinyao.pub/tags/%E7%94%9F%E6%B4%BB/"/>
-    
       <category term="人口" scheme="http://www.xinyao.pub/tags/%E4%BA%BA%E5%8F%A3/"/>
+    
+      <category term="生活" scheme="http://www.xinyao.pub/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
@@ -423,30 +423,6 @@
   </entry>
   
   <entry>
-    <title>R语言与svm分类</title>
-    <link href="http://www.xinyao.pub/2016/12/16/2016-12-16-svm/"/>
-    <id>http://www.xinyao.pub/2016/12/16/2016-12-16-svm/</id>
-    <published>2016-12-15T16:00:00.000Z</published>
-    <updated>2019-05-12T12:14:02.924Z</updated>
-    
-    <content type="html"><![CDATA[<p>支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程</p><a id="more"></a><h1 id="svm简介"><a href="#svm简介" class="headerlink" title="svm简介"></a>svm简介</h1><p>假如想要将<code>iris</code>数据集的<code>setosa</code>和<code>versicolor</code>分开，有无数种方法（有无数条直线或者曲线）。但似乎 <strong>红色这条线</strong> 的鲁棒性最强，对点波动的容忍度更高，而且直观上看，<strong>红色这条线</strong> 也在两堆点的正中间。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm1.png" alt></p><h1 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h1><p>假设超平面 $f(x) = w^{T}x + b$ ，当f(x)&gt;0时，y为正类(+1)，f(x)&lt;0时，y为反类(-1)。而且分类正确的条件是，f(x)和y同号，即 $f(x)y$ 为正。则定义 <strong>函数间隔</strong> 为 $\widehat{\gamma }=y(w^{T}x + b) = yf(x)$ 。由于w和b同时变动时，超平面不变 $(w^{T}x + b = 0)$ ，但是 <strong>函数间隔</strong> 会变化，所以函数衡量只能衡量分类是否正确，无法找出最完美的分割线。下面引出 <strong>几何间隔</strong> ，能很好的解决这个问题</p><h1 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm3.png" alt></p><p>如上图所示，r是x0到x的距离，$(w^{T}x + b = 0)$ 是超平面，w是法向量。则</p><script type="math/tex; mode=display">x = x_{0} + r\frac{w}{\left \| w \right \|}</script><p>$\left | w \right |$ 是单位长度的法向量，也称为 <strong>模</strong></p><p>上式两边同乘以 $w^{T}$，可得 $w^{T}x = w^{T}x_{0} + r\frac{w^{2}}{\left | w \right |}$ ，由于x0在超平面上，所以 $w^{T}x_{0}+b=0$ ，则 $\gamma =\frac{w^{T}x+b}{\left | w \right |}=\frac{f(x)}{\left | w \right |}$ ，但 $\gamma$ 有可能为负，将绝对值 $\gamma$ 写为：</p><script type="math/tex; mode=display">\widetilde{\gamma } = y\gamma =\frac{\widehat{\gamma }}{f(x)} * \frac{f(x)}{\left | w \right |} = \frac{\widehat{\gamma }}{\left | w \right |}</script><p>可以清楚的看到 <strong>几何间隔</strong> 不会随着w和b的变化而改变，最大间隔分类超平面中的 <strong>间隔</strong> 指的是几何间隔。</p><h1 id="最大间隔分类器"><a href="#最大间隔分类器" class="headerlink" title="最大间隔分类器"></a>最大间隔分类器</h1><p>最大间隔分类器的目标函数变成：$max \widehat{\gamma }$ ，同时满足 $y_{i}(w^{T}x_{i}+b)= \widehat{\gamma _{i}}  \geqslant  \widehat{\gamma }$</p><p>如果令函数间隔 $\widehat{\gamma } = 1$ ，则目标函数变为 $max\frac{1}{\left | w \right |}$ 且 $y_{i}(w^{T}x_{i}+b) \geqslant 1$ ，满足的 $y_{i}(w^{T}x_{i}+b) = 1$ 的点称为 <strong>支持向量</strong></p><h1 id="R包实现"><a href="#R包实现" class="headerlink" title="R包实现"></a>R包实现</h1><p>用SVM将<code>iris</code>数据集的<code>setosa</code>、<code>versicolor</code>、<code>virginica</code>分类，下图的分类边界即是 <strong>支持向量</strong></p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm2.png" alt></p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm实现iris数据集分类</span></span><br><span class="line">iris_subset = iris[,<span class="number">3</span>:<span class="number">5</span>] <span class="comment"># 筛选Petal.Length,Petal.Width,Species</span></span><br><span class="line">model = svm(Species~.,iris_subset) <span class="comment"># svm model</span></span><br><span class="line">iris_subset$svmpre = predict(model) <span class="comment"># svm预测值，等同于fit</span></span><br><span class="line">gridRange = apply(iris_subset[c(<span class="string">'Petal.Width'</span>,<span class="string">'Petal.Length'</span>)],<span class="number">2</span>,range) <span class="comment">#两个变量的最大和最小值</span></span><br><span class="line">x1 = seq(gridRange[<span class="number">1</span>,<span class="number">1</span>],gridRange[<span class="number">2</span>,<span class="number">1</span>],by=(gridRange[<span class="number">2</span>,<span class="number">1</span>]-gridRange[<span class="number">1</span>,<span class="number">1</span>])/<span class="number">100</span>)</span><br><span class="line">x2 = seq(gridRange[<span class="number">1</span>,<span class="number">2</span>],gridRange[<span class="number">2</span>,<span class="number">2</span>],by=(gridRange[<span class="number">2</span>,<span class="number">2</span>]-gridRange[<span class="number">1</span>,<span class="number">2</span>])/<span class="number">100</span>)</span><br><span class="line">grid = expand.grid(Petal.Width = x1,Petal.Length = x2)</span><br><span class="line">grid$class = predict(model,grid)</span><br><span class="line">ggplot(<span class="literal">NULL</span>) +</span><br><span class="line">  geom_point(data = iris_subset,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = Species,</span><br><span class="line">                 shape = Species)) +</span><br><span class="line">  geom_point(data = grid,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = as.factor(class)),</span><br><span class="line">             size = <span class="number">1.5</span>,</span><br><span class="line">             alpha = <span class="number">0.05</span>,</span><br><span class="line">             show.legend = <span class="literal">FALSE</span>) +</span><br><span class="line">  scale_color_brewer(palette = <span class="string">"Set1"</span>) +</span><br><span class="line">  scale_x_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  scale_y_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  ggtitle(<span class="string">"svm for iris"</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="R" scheme="http://www.xinyao.pub/categories/R/"/>
-    
-    
-      <category term="R" scheme="http://www.xinyao.pub/tags/R/"/>
-    
-      <category term="svm" scheme="http://www.xinyao.pub/tags/svm/"/>
-    
-  </entry>
-  
-  <entry>
     <title>房地产抑制政策何时会出？</title>
     <link href="http://www.xinyao.pub/2016/12/16/2016-12-16-real-estate-policy/"/>
     <id>http://www.xinyao.pub/2016/12/16/2016-12-16-real-estate-policy/</id>
@@ -478,6 +454,30 @@
       <category term="政策" scheme="http://www.xinyao.pub/tags/%E6%94%BF%E7%AD%96/"/>
     
       <category term="房地产政策" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E5%9C%B0%E4%BA%A7%E6%94%BF%E7%AD%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言与svm分类</title>
+    <link href="http://www.xinyao.pub/2016/12/16/2016-12-16-svm/"/>
+    <id>http://www.xinyao.pub/2016/12/16/2016-12-16-svm/</id>
+    <published>2016-12-15T16:00:00.000Z</published>
+    <updated>2019-05-12T12:14:02.924Z</updated>
+    
+    <content type="html"><![CDATA[<p>支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程</p><a id="more"></a><h1 id="svm简介"><a href="#svm简介" class="headerlink" title="svm简介"></a>svm简介</h1><p>假如想要将<code>iris</code>数据集的<code>setosa</code>和<code>versicolor</code>分开，有无数种方法（有无数条直线或者曲线）。但似乎 <strong>红色这条线</strong> 的鲁棒性最强，对点波动的容忍度更高，而且直观上看，<strong>红色这条线</strong> 也在两堆点的正中间。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm1.png" alt></p><h1 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h1><p>假设超平面 $f(x) = w^{T}x + b$ ，当f(x)&gt;0时，y为正类(+1)，f(x)&lt;0时，y为反类(-1)。而且分类正确的条件是，f(x)和y同号，即 $f(x)y$ 为正。则定义 <strong>函数间隔</strong> 为 $\widehat{\gamma }=y(w^{T}x + b) = yf(x)$ 。由于w和b同时变动时，超平面不变 $(w^{T}x + b = 0)$ ，但是 <strong>函数间隔</strong> 会变化，所以函数衡量只能衡量分类是否正确，无法找出最完美的分割线。下面引出 <strong>几何间隔</strong> ，能很好的解决这个问题</p><h1 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm3.png" alt></p><p>如上图所示，r是x0到x的距离，$(w^{T}x + b = 0)$ 是超平面，w是法向量。则</p><script type="math/tex; mode=display">x = x_{0} + r\frac{w}{\left \| w \right \|}</script><p>$\left | w \right |$ 是单位长度的法向量，也称为 <strong>模</strong></p><p>上式两边同乘以 $w^{T}$，可得 $w^{T}x = w^{T}x_{0} + r\frac{w^{2}}{\left | w \right |}$ ，由于x0在超平面上，所以 $w^{T}x_{0}+b=0$ ，则 $\gamma =\frac{w^{T}x+b}{\left | w \right |}=\frac{f(x)}{\left | w \right |}$ ，但 $\gamma$ 有可能为负，将绝对值 $\gamma$ 写为：</p><script type="math/tex; mode=display">\widetilde{\gamma } = y\gamma =\frac{\widehat{\gamma }}{f(x)} * \frac{f(x)}{\left | w \right |} = \frac{\widehat{\gamma }}{\left | w \right |}</script><p>可以清楚的看到 <strong>几何间隔</strong> 不会随着w和b的变化而改变，最大间隔分类超平面中的 <strong>间隔</strong> 指的是几何间隔。</p><h1 id="最大间隔分类器"><a href="#最大间隔分类器" class="headerlink" title="最大间隔分类器"></a>最大间隔分类器</h1><p>最大间隔分类器的目标函数变成：$max \widehat{\gamma }$ ，同时满足 $y_{i}(w^{T}x_{i}+b)= \widehat{\gamma _{i}}  \geqslant  \widehat{\gamma }$</p><p>如果令函数间隔 $\widehat{\gamma } = 1$ ，则目标函数变为 $max\frac{1}{\left | w \right |}$ 且 $y_{i}(w^{T}x_{i}+b) \geqslant 1$ ，满足的 $y_{i}(w^{T}x_{i}+b) = 1$ 的点称为 <strong>支持向量</strong></p><h1 id="R包实现"><a href="#R包实现" class="headerlink" title="R包实现"></a>R包实现</h1><p>用SVM将<code>iris</code>数据集的<code>setosa</code>、<code>versicolor</code>、<code>virginica</code>分类，下图的分类边界即是 <strong>支持向量</strong></p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm2.png" alt></p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm实现iris数据集分类</span></span><br><span class="line">iris_subset = iris[,<span class="number">3</span>:<span class="number">5</span>] <span class="comment"># 筛选Petal.Length,Petal.Width,Species</span></span><br><span class="line">model = svm(Species~.,iris_subset) <span class="comment"># svm model</span></span><br><span class="line">iris_subset$svmpre = predict(model) <span class="comment"># svm预测值，等同于fit</span></span><br><span class="line">gridRange = apply(iris_subset[c(<span class="string">'Petal.Width'</span>,<span class="string">'Petal.Length'</span>)],<span class="number">2</span>,range) <span class="comment">#两个变量的最大和最小值</span></span><br><span class="line">x1 = seq(gridRange[<span class="number">1</span>,<span class="number">1</span>],gridRange[<span class="number">2</span>,<span class="number">1</span>],by=(gridRange[<span class="number">2</span>,<span class="number">1</span>]-gridRange[<span class="number">1</span>,<span class="number">1</span>])/<span class="number">100</span>)</span><br><span class="line">x2 = seq(gridRange[<span class="number">1</span>,<span class="number">2</span>],gridRange[<span class="number">2</span>,<span class="number">2</span>],by=(gridRange[<span class="number">2</span>,<span class="number">2</span>]-gridRange[<span class="number">1</span>,<span class="number">2</span>])/<span class="number">100</span>)</span><br><span class="line">grid = expand.grid(Petal.Width = x1,Petal.Length = x2)</span><br><span class="line">grid$class = predict(model,grid)</span><br><span class="line">ggplot(<span class="literal">NULL</span>) +</span><br><span class="line">  geom_point(data = iris_subset,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = Species,</span><br><span class="line">                 shape = Species)) +</span><br><span class="line">  geom_point(data = grid,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = as.factor(class)),</span><br><span class="line">             size = <span class="number">1.5</span>,</span><br><span class="line">             alpha = <span class="number">0.05</span>,</span><br><span class="line">             show.legend = <span class="literal">FALSE</span>) +</span><br><span class="line">  scale_color_brewer(palette = <span class="string">"Set1"</span>) +</span><br><span class="line">  scale_x_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  scale_y_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  ggtitle(<span class="string">"svm for iris"</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="R" scheme="http://www.xinyao.pub/categories/R/"/>
+    
+    
+      <category term="R" scheme="http://www.xinyao.pub/tags/R/"/>
+    
+      <category term="svm" scheme="http://www.xinyao.pub/tags/svm/"/>
     
   </entry>
   
