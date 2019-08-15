@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xinyao.pub/"/>
-  <updated>2019-05-11T12:19:38.983Z</updated>
+  <updated>2019-08-15T03:45:32.474Z</updated>
   <id>http://www.xinyao.pub/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《金字塔原理》</title>
+    <link href="http://www.xinyao.pub/2019/08/15/2019-08-15-the-pyramid-principle/"/>
+    <id>http://www.xinyao.pub/2019/08/15/2019-08-15-the-pyramid-principle/</id>
+    <published>2019-08-14T16:00:00.000Z</published>
+    <updated>2019-08-15T03:45:32.474Z</updated>
+    
+    <content type="html"><![CDATA[<p>明托老奶奶的《金字塔原理》，作为结构化思维的经典之作已经风靡多年。读完之后，想想老奶奶真是不容易。一大把年纪为了赚稿费，一个结构化思维的原理，居然洋洋洒洒写了几百页。这书不但不结构化思维，而且满满都是绕晕性思维。</p><a id="more"></a><p>硬生生的看完《金字塔原理》，用几句话便能概括书中的要点</p><h1 id="如何讲故事"><a href="#如何讲故事" class="headerlink" title="如何讲故事"></a>如何讲故事</h1><p>乔布斯是演讲的天才，大家都很羡慕乔布斯的讲故事能力。在讲故事的过程中，最简洁的表达逻辑是 <em>背景-&gt;冲突-&gt;疑问-&gt;回答</em> 。这种简单的逻辑更易懂，更让吸引听众的注意力</p><h1 id="如何来回答"><a href="#如何来回答" class="headerlink" title="如何来回答"></a>如何来回答</h1><p>讲故事的最关键的部分是 <em>回答</em>，回答会有几种逻辑</p><ol><li>时间顺序。主要是因果关系，因为…所以我怎么做</li><li>空间顺序。这是《金字塔原理》的最最最核心的部分，不断的拆解目标，形状很像金字塔。采用MECE原则，拆解的要素要穷尽且独立</li><li>重要性顺序。首先…其次…</li></ol><h1 id="如何来总结"><a href="#如何来总结" class="headerlink" title="如何来总结"></a>如何来总结</h1><p>在回答后可能需要做总结，概括我们的思想。这里要特别注意避免没有意义的总结。比如数据分析中经常遇到，PPT的标题是《A和B的点击量对比》，这种总结可以说毫无意义。没有明确结论的总结，不是个好的总结</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;明托老奶奶的《金字塔原理》，作为结构化思维的经典之作已经风靡多年。读完之后，想想老奶奶真是不容易。一大把年纪为了赚稿费，一个结构化思维的原理，居然洋洋洒洒写了几百页。这书不但不结构化思维，而且满满都是绕晕性思维。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="个人能力" scheme="http://www.xinyao.pub/categories/%E4%B8%AA%E4%BA%BA%E8%83%BD%E5%8A%9B/"/>
+    
+    
+      <category term="个人能力" scheme="http://www.xinyao.pub/tags/%E4%B8%AA%E4%BA%BA%E8%83%BD%E5%8A%9B/"/>
+    
+      <category term="金字塔原理" scheme="http://www.xinyao.pub/tags/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>三国演义之优柔寡断的何进</title>
@@ -259,28 +283,6 @@
   </entry>
   
   <entry>
-    <title>揭秘北京换房者</title>
-    <link href="http://www.xinyao.pub/2017/03/29/2017-02-24-house-move/"/>
-    <id>http://www.xinyao.pub/2017/03/29/2017-02-24-house-move/</id>
-    <published>2017-03-28T16:00:00.000Z</published>
-    <updated>2019-06-28T04:03:29.484Z</updated>
-    
-    <content type="html"><![CDATA[<p>购房的目的无非3种，首次置业、改善换房、投资。毋庸置疑的是，北京的市场充满了换房者。大家身边都有换房的案例，要么孩子要出生需要大面积；要么孩子上学需要学区房；要么想要从郊区换到城区享受便利的生活。以下是换房者揭秘：</p><a id="more"></a><h1 id="换房比例"><a href="#换房比例" class="headerlink" title="换房比例"></a>换房比例</h1><p>假如换房者卖掉A房，换一套B房。全市换房者的占比由于以下原因是很难计算的：</p><ol><li>A房和B房不在一个公司成交，没有相应的数据</li><li>即使A房和B房都在同一公司成交，但是成交者一次是丈夫，一次是妻子，这样也会造成无法跟踪换房情况</li></ol><p>初步估计 换房者的比例在40%以上，所以北京已经进入了满足改善型需求的时代。</p><h1 id="什么人在换房"><a href="#什么人在换房" class="headerlink" title="什么人在换房"></a>什么人在换房</h1><h2 id="换房者年代分化严重，置换越来越难"><a href="#换房者年代分化严重，置换越来越难" class="headerlink" title="换房者年代分化严重，置换越来越难"></a>换房者年代分化严重，置换越来越难</h2><p>换房是特定年龄下的特定需求，是自然而然的事情。但现在的问题是分化特别严重，以前可能是一批人努努力都可以换房，现在只有特定年代的人能换的起了</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang1.png" alt></p><p>从年龄来看也印证了换房难的观点，12年时31岁可以换房，16年34岁才能换房，17年会不会更难点，变成35岁才能换房</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang2.png" alt></p><h2 id="籍贯为北京的换房者比例下降"><a href="#籍贯为北京的换房者比例下降" class="headerlink" title="籍贯为北京的换房者比例下降"></a>籍贯为北京的换房者比例下降</h2><p>虽然籍贯为北京的换房者比例下降，但是北京人仍然是换房主力，还有大批的置换需求未被满足。河北、河南、山东的换房者占比迅速增加。原因是这些省份的城市吸引力没有北京强，前些年大批人口来到北京首次置业，现阶段到了改善的时间，所以换房比例增加。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang3.png" alt></p><h1 id="为什么换房"><a href="#为什么换房" class="headerlink" title="为什么换房"></a>为什么换房</h1><h2 id="为了面积换房"><a href="#为了面积换房" class="headerlink" title="为了面积换房"></a>为了面积换房</h2><p>12年的时候，能改善14平米，相当于多1个居室。14～15年能改善10平米，也能多1个小的居室。16年北京房价涨了50%，改善的面积仅仅为 <strong>3平米</strong> ，有必要看看改善的目的了。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang4.png" alt></p><h2 id="换房要增加多少钱"><a href="#换房要增加多少钱" class="headerlink" title="换房要增加多少钱"></a>换房要增加多少钱</h2><p>换后的房子比换前贵50～65万，其中16年稍微有所降低，再次印证了 <strong>换房难</strong> 的观点。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang5.png" alt></p><h2 id="远换近"><a href="#远换近" class="headerlink" title="远换近"></a>远换近</h2><p>为了便利的生活，换房者会换到更靠近市区的地段。假如以天安门作为中心，平均的距离是向市中心移动1km，即实现远换近1km</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang6.png" alt></p><p>一种换房的倾向是，<strong>换房者更愿意在本小区换房</strong> ，比例已经达到了27%</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang7.png" alt></p><p>在本小区换房，目的就是为了更大的面积，且生活圈子不受影响。但是2015年的特殊情况需要关注</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang8.png" alt></p><h1 id="不同年代的人为什么换房"><a href="#不同年代的人为什么换房" class="headerlink" title="不同年代的人为什么换房"></a>不同年代的人为什么换房</h1><h2 id="年代-面积"><a href="#年代-面积" class="headerlink" title="年代 * 面积"></a>年代 * 面积</h2><p>下图说明几点问题：</p><ol><li>从面积差和卖出面积来看，70后的面积需求已经基本满足，但是80后依然在努力换更大的面积</li><li>16年房价上涨幅度很大，打压了82～85的面积需求，其中83和85受影响最大</li><li>86由于起点较低，换到的面积不太大，是未来2～3年的换房主力</li></ol><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang9.png" alt></p><h2 id="年代-距离"><a href="#年代-距离" class="headerlink" title="年代 * 距离"></a>年代 * 距离</h2><ol><li>住房离天安门的距离与年代有关，出生时间越早，换的房子越靠近内城</li><li>85在12～14年换房主要为了面积，而不是位置</li></ol><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang10.png" alt></p><h2 id="年代-交易周期"><a href="#年代-交易周期" class="headerlink" title="年代 * 交易周期"></a>年代 * 交易周期</h2><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang11.png" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;购房的目的无非3种，首次置业、改善换房、投资。毋庸置疑的是，北京的市场充满了换房者。大家身边都有换房的案例，要么孩子要出生需要大面积；要么孩子上学需要学区房；要么想要从郊区换到城区享受便利的生活。以下是换房者揭秘：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="房产" scheme="http://www.xinyao.pub/categories/%E6%88%BF%E4%BA%A7/"/>
-    
-    
-      <category term="房产" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E4%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Mac的移动硬盘地址</title>
     <link href="http://www.xinyao.pub/2017/03/29/2017-03-29-disk-address/"/>
     <id>http://www.xinyao.pub/2017/03/29/2017-03-29-disk-address/</id>
@@ -303,6 +305,28 @@
   </entry>
   
   <entry>
+    <title>揭秘北京换房者</title>
+    <link href="http://www.xinyao.pub/2017/03/29/2017-02-24-house-move/"/>
+    <id>http://www.xinyao.pub/2017/03/29/2017-02-24-house-move/</id>
+    <published>2017-03-28T16:00:00.000Z</published>
+    <updated>2019-06-28T04:03:29.484Z</updated>
+    
+    <content type="html"><![CDATA[<p>购房的目的无非3种，首次置业、改善换房、投资。毋庸置疑的是，北京的市场充满了换房者。大家身边都有换房的案例，要么孩子要出生需要大面积；要么孩子上学需要学区房；要么想要从郊区换到城区享受便利的生活。以下是换房者揭秘：</p><a id="more"></a><h1 id="换房比例"><a href="#换房比例" class="headerlink" title="换房比例"></a>换房比例</h1><p>假如换房者卖掉A房，换一套B房。全市换房者的占比由于以下原因是很难计算的：</p><ol><li>A房和B房不在一个公司成交，没有相应的数据</li><li>即使A房和B房都在同一公司成交，但是成交者一次是丈夫，一次是妻子，这样也会造成无法跟踪换房情况</li></ol><p>初步估计 换房者的比例在40%以上，所以北京已经进入了满足改善型需求的时代。</p><h1 id="什么人在换房"><a href="#什么人在换房" class="headerlink" title="什么人在换房"></a>什么人在换房</h1><h2 id="换房者年代分化严重，置换越来越难"><a href="#换房者年代分化严重，置换越来越难" class="headerlink" title="换房者年代分化严重，置换越来越难"></a>换房者年代分化严重，置换越来越难</h2><p>换房是特定年龄下的特定需求，是自然而然的事情。但现在的问题是分化特别严重，以前可能是一批人努努力都可以换房，现在只有特定年代的人能换的起了</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang1.png" alt></p><p>从年龄来看也印证了换房难的观点，12年时31岁可以换房，16年34岁才能换房，17年会不会更难点，变成35岁才能换房</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang2.png" alt></p><h2 id="籍贯为北京的换房者比例下降"><a href="#籍贯为北京的换房者比例下降" class="headerlink" title="籍贯为北京的换房者比例下降"></a>籍贯为北京的换房者比例下降</h2><p>虽然籍贯为北京的换房者比例下降，但是北京人仍然是换房主力，还有大批的置换需求未被满足。河北、河南、山东的换房者占比迅速增加。原因是这些省份的城市吸引力没有北京强，前些年大批人口来到北京首次置业，现阶段到了改善的时间，所以换房比例增加。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang3.png" alt></p><h1 id="为什么换房"><a href="#为什么换房" class="headerlink" title="为什么换房"></a>为什么换房</h1><h2 id="为了面积换房"><a href="#为了面积换房" class="headerlink" title="为了面积换房"></a>为了面积换房</h2><p>12年的时候，能改善14平米，相当于多1个居室。14～15年能改善10平米，也能多1个小的居室。16年北京房价涨了50%，改善的面积仅仅为 <strong>3平米</strong> ，有必要看看改善的目的了。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang4.png" alt></p><h2 id="换房要增加多少钱"><a href="#换房要增加多少钱" class="headerlink" title="换房要增加多少钱"></a>换房要增加多少钱</h2><p>换后的房子比换前贵50～65万，其中16年稍微有所降低，再次印证了 <strong>换房难</strong> 的观点。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang5.png" alt></p><h2 id="远换近"><a href="#远换近" class="headerlink" title="远换近"></a>远换近</h2><p>为了便利的生活，换房者会换到更靠近市区的地段。假如以天安门作为中心，平均的距离是向市中心移动1km，即实现远换近1km</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang6.png" alt></p><p>一种换房的倾向是，<strong>换房者更愿意在本小区换房</strong> ，比例已经达到了27%</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang7.png" alt></p><p>在本小区换房，目的就是为了更大的面积，且生活圈子不受影响。但是2015年的特殊情况需要关注</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang8.png" alt></p><h1 id="不同年代的人为什么换房"><a href="#不同年代的人为什么换房" class="headerlink" title="不同年代的人为什么换房"></a>不同年代的人为什么换房</h1><h2 id="年代-面积"><a href="#年代-面积" class="headerlink" title="年代 * 面积"></a>年代 * 面积</h2><p>下图说明几点问题：</p><ol><li>从面积差和卖出面积来看，70后的面积需求已经基本满足，但是80后依然在努力换更大的面积</li><li>16年房价上涨幅度很大，打压了82～85的面积需求，其中83和85受影响最大</li><li>86由于起点较低，换到的面积不太大，是未来2～3年的换房主力</li></ol><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang9.png" alt></p><h2 id="年代-距离"><a href="#年代-距离" class="headerlink" title="年代 * 距离"></a>年代 * 距离</h2><ol><li>住房离天安门的距离与年代有关，出生时间越早，换的房子越靠近内城</li><li>85在12～14年换房主要为了面积，而不是位置</li></ol><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang10.png" alt></p><h2 id="年代-交易周期"><a href="#年代-交易周期" class="headerlink" title="年代 * 交易周期"></a>年代 * 交易周期</h2><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2017/huanfang11.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;购房的目的无非3种，首次置业、改善换房、投资。毋庸置疑的是，北京的市场充满了换房者。大家身边都有换房的案例，要么孩子要出生需要大面积；要么孩子上学需要学区房；要么想要从郊区换到城区享受便利的生活。以下是换房者揭秘：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="房产" scheme="http://www.xinyao.pub/categories/%E6%88%BF%E4%BA%A7/"/>
+    
+    
+      <category term="房产" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E4%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>北京二手住宅的趋势和周期</title>
     <link href="http://www.xinyao.pub/2017/02/21/2017-02-21-trend-seasonal/"/>
     <id>http://www.xinyao.pub/2017/02/21/2017-02-21-trend-seasonal/</id>
@@ -321,30 +345,6 @@
     
     
       <category term="房产" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E4%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日本房地产泡沫</title>
-    <link href="http://www.xinyao.pub/2017/02/07/2017-02-17-japan-res/"/>
-    <id>http://www.xinyao.pub/2017/02/07/2017-02-17-japan-res/</id>
-    <published>2017-02-06T16:00:00.000Z</published>
-    <updated>2019-05-12T13:10:24.621Z</updated>
-    
-    <content type="html"><![CDATA[<p>日本在二战后得到美国的支持，发展迅速，GDP一度达到美国的70%，大有超越美国之势。但从90年代开始，日本房地产崩盘，经济长期萎靡不振，所以有了“失去的20年”。学习日本的房地产发展对判断中国的房地产前途有重要的借鉴意义。</p><a id="more"></a><h1 id="日本房地产发展的4个时期"><a href="#日本房地产发展的4个时期" class="headerlink" title="日本房地产发展的4个时期"></a>日本房地产发展的4个时期</h1><h2 id="制度建设期"><a href="#制度建设期" class="headerlink" title="制度建设期"></a>制度建设期</h2><p>战后～70年代中期 是制度建设期。在这一时期，日本建立了住房体制，并且提出保障房来满足人民的需求。1973年爆发了第四次中东战争，阿拉伯国家将油价提高了3倍。严重依赖进口石油的日本发生了“石油危机”，原材料价格上涨，土地和房地产价格也相应的上涨。</p><h2 id="经济发展期"><a href="#经济发展期" class="headerlink" title="经济发展期"></a>经济发展期</h2><p>70年代中期～80年代中期 是经济发展期。这一时期是日本经济发展最迅速的时期。日本优先发展 重工业 和 城市化建设 ，大量的人口流入城市，产生了大量的需求。经济发展带动了房地产的发展。</p><h2 id="泡沫产生、膨胀期"><a href="#泡沫产生、膨胀期" class="headerlink" title="泡沫产生、膨胀期"></a>泡沫产生、膨胀期</h2><p>80年代中期～90年代初期 是泡沫产生、膨胀期。大部分人认为房地产泡沫的导火索是 广场协定 。80年代美国财政赤字巨大，贸易逆差严重，为了刺激美国出口，1985年美、日、德、法、英签订广场协定，五国联合干预外汇市场，造成美元大幅贬值，日元大幅升值（日本被坑）。日元升值后，国际资金纷纷进入日本。而且日本政府过度的采取宽松的货币政策，M2大幅增加，热钱流入房地产，导致地产价格猛涨。</p><h2 id="失去的20年"><a href="#失去的20年" class="headerlink" title="失去的20年"></a>失去的20年</h2><p>90年代初期～今 是失去的20年，房地产在90年代初期崩盘，日本经济一路下行，至今尚未恢复。</p><h1 id="第一次泡沫"><a href="#第一次泡沫" class="headerlink" title="第一次泡沫"></a>第一次泡沫</h1><p>日本的第一次房地产泡沫破灭于1974年，房地产价格短暂下行。</p><h2 id="第一次泡沫产生的原因"><a href="#第一次泡沫产生的原因" class="headerlink" title="第一次泡沫产生的原因"></a>第一次泡沫产生的原因</h2><ol><li>住房贷款由公共机关向民间转变，释放了住宅需求</li><li>布雷顿森林体系瓦解 -&gt; 日元升值 -&gt; 出口受阻 -&gt; 经济堪忧 -&gt; 供应货币挽救经济 -&gt; 泡沫产生。由于美越战争带来的美元危机，人们疯狂的用美元兑换黄金。于是1971年尼克松结束了布雷顿森林体系，停止黄金自由兑换，不再实行固定汇率，造成美元贬值。</li><li>刚需和投机需求并存。45～50年是第一次婴儿潮，他们在70年代正好成为刚需</li></ol><h1 id="第二次泡沫"><a href="#第二次泡沫" class="headerlink" title="第二次泡沫"></a>第二次泡沫</h1><p>日本的第二次房地产泡沫破灭于1991年，自此日本进入了“失去的20年”。</p><h2 id="第二次泡沫产生的原因"><a href="#第二次泡沫产生的原因" class="headerlink" title="第二次泡沫产生的原因"></a>第二次泡沫产生的原因</h2><ol><li>1985年广场协定 -&gt; 日元升值 -&gt; 出口受阻 -&gt; 经济堪忧 -&gt; 供应货币挽救经济 -&gt; 泡沫产生。与第一次泡沫产生如出一辙</li><li>宽松的金融环境为泡沫滋生提供了制度条件，融资自由化导致银行的作用下降，银行的不动产贷款增加</li><li>金融加速器推波助澜，土地价格涨 -&gt; 持有土地的企业融资成本降低 -&gt; 企业融资买地</li></ol><h2 id="第二次泡沫破灭的原因"><a href="#第二次泡沫破灭的原因" class="headerlink" title="第二次泡沫破灭的原因"></a>第二次泡沫破灭的原因</h2><ul><li>深层原因是需求不足。A：日本的城市化在70年代中期已经基本完成，没有新的进城人口；B：人口老龄化严重，没有新的刚需</li><li>表面原因是供需逆转。由松到紧的货币政策，导致房价下跌，企业纷纷卖地还债，供给大增</li></ul><h2 id="第二次泡沫造成的影响"><a href="#第二次泡沫造成的影响" class="headerlink" title="第二次泡沫造成的影响"></a>第二次泡沫造成的影响</h2><ol><li>开发商倒闭</li><li>金融机构坏账增加，有的机构破产</li><li>政府财政赤字严重，国债增加</li><li>普通家庭破产</li></ol><p>1995年后，日本和美国签订“反广场协定”，允许日本干预汇率，随后日元贬值。日本政府也实行了扩张性的财政政策，降低税赋和贴现率来挽救经济</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;日本在二战后得到美国的支持，发展迅速，GDP一度达到美国的70%，大有超越美国之势。但从90年代开始，日本房地产崩盘，经济长期萎靡不振，所以有了“失去的20年”。学习日本的房地产发展对判断中国的房地产前途有重要的借鉴意义。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="房产" scheme="http://www.xinyao.pub/categories/%E6%88%BF%E4%BA%A7/"/>
-    
-    
-      <category term="日本" scheme="http://www.xinyao.pub/tags/%E6%97%A5%E6%9C%AC/"/>
-    
-      <category term="房地产泡沫" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E5%9C%B0%E4%BA%A7%E6%B3%A1%E6%B2%AB/"/>
     
   </entry>
   
@@ -373,6 +373,30 @@
   </entry>
   
   <entry>
+    <title>日本房地产泡沫</title>
+    <link href="http://www.xinyao.pub/2017/02/07/2017-02-17-japan-res/"/>
+    <id>http://www.xinyao.pub/2017/02/07/2017-02-17-japan-res/</id>
+    <published>2017-02-06T16:00:00.000Z</published>
+    <updated>2019-05-12T13:10:24.621Z</updated>
+    
+    <content type="html"><![CDATA[<p>日本在二战后得到美国的支持，发展迅速，GDP一度达到美国的70%，大有超越美国之势。但从90年代开始，日本房地产崩盘，经济长期萎靡不振，所以有了“失去的20年”。学习日本的房地产发展对判断中国的房地产前途有重要的借鉴意义。</p><a id="more"></a><h1 id="日本房地产发展的4个时期"><a href="#日本房地产发展的4个时期" class="headerlink" title="日本房地产发展的4个时期"></a>日本房地产发展的4个时期</h1><h2 id="制度建设期"><a href="#制度建设期" class="headerlink" title="制度建设期"></a>制度建设期</h2><p>战后～70年代中期 是制度建设期。在这一时期，日本建立了住房体制，并且提出保障房来满足人民的需求。1973年爆发了第四次中东战争，阿拉伯国家将油价提高了3倍。严重依赖进口石油的日本发生了“石油危机”，原材料价格上涨，土地和房地产价格也相应的上涨。</p><h2 id="经济发展期"><a href="#经济发展期" class="headerlink" title="经济发展期"></a>经济发展期</h2><p>70年代中期～80年代中期 是经济发展期。这一时期是日本经济发展最迅速的时期。日本优先发展 重工业 和 城市化建设 ，大量的人口流入城市，产生了大量的需求。经济发展带动了房地产的发展。</p><h2 id="泡沫产生、膨胀期"><a href="#泡沫产生、膨胀期" class="headerlink" title="泡沫产生、膨胀期"></a>泡沫产生、膨胀期</h2><p>80年代中期～90年代初期 是泡沫产生、膨胀期。大部分人认为房地产泡沫的导火索是 广场协定 。80年代美国财政赤字巨大，贸易逆差严重，为了刺激美国出口，1985年美、日、德、法、英签订广场协定，五国联合干预外汇市场，造成美元大幅贬值，日元大幅升值（日本被坑）。日元升值后，国际资金纷纷进入日本。而且日本政府过度的采取宽松的货币政策，M2大幅增加，热钱流入房地产，导致地产价格猛涨。</p><h2 id="失去的20年"><a href="#失去的20年" class="headerlink" title="失去的20年"></a>失去的20年</h2><p>90年代初期～今 是失去的20年，房地产在90年代初期崩盘，日本经济一路下行，至今尚未恢复。</p><h1 id="第一次泡沫"><a href="#第一次泡沫" class="headerlink" title="第一次泡沫"></a>第一次泡沫</h1><p>日本的第一次房地产泡沫破灭于1974年，房地产价格短暂下行。</p><h2 id="第一次泡沫产生的原因"><a href="#第一次泡沫产生的原因" class="headerlink" title="第一次泡沫产生的原因"></a>第一次泡沫产生的原因</h2><ol><li>住房贷款由公共机关向民间转变，释放了住宅需求</li><li>布雷顿森林体系瓦解 -&gt; 日元升值 -&gt; 出口受阻 -&gt; 经济堪忧 -&gt; 供应货币挽救经济 -&gt; 泡沫产生。由于美越战争带来的美元危机，人们疯狂的用美元兑换黄金。于是1971年尼克松结束了布雷顿森林体系，停止黄金自由兑换，不再实行固定汇率，造成美元贬值。</li><li>刚需和投机需求并存。45～50年是第一次婴儿潮，他们在70年代正好成为刚需</li></ol><h1 id="第二次泡沫"><a href="#第二次泡沫" class="headerlink" title="第二次泡沫"></a>第二次泡沫</h1><p>日本的第二次房地产泡沫破灭于1991年，自此日本进入了“失去的20年”。</p><h2 id="第二次泡沫产生的原因"><a href="#第二次泡沫产生的原因" class="headerlink" title="第二次泡沫产生的原因"></a>第二次泡沫产生的原因</h2><ol><li>1985年广场协定 -&gt; 日元升值 -&gt; 出口受阻 -&gt; 经济堪忧 -&gt; 供应货币挽救经济 -&gt; 泡沫产生。与第一次泡沫产生如出一辙</li><li>宽松的金融环境为泡沫滋生提供了制度条件，融资自由化导致银行的作用下降，银行的不动产贷款增加</li><li>金融加速器推波助澜，土地价格涨 -&gt; 持有土地的企业融资成本降低 -&gt; 企业融资买地</li></ol><h2 id="第二次泡沫破灭的原因"><a href="#第二次泡沫破灭的原因" class="headerlink" title="第二次泡沫破灭的原因"></a>第二次泡沫破灭的原因</h2><ul><li>深层原因是需求不足。A：日本的城市化在70年代中期已经基本完成，没有新的进城人口；B：人口老龄化严重，没有新的刚需</li><li>表面原因是供需逆转。由松到紧的货币政策，导致房价下跌，企业纷纷卖地还债，供给大增</li></ul><h2 id="第二次泡沫造成的影响"><a href="#第二次泡沫造成的影响" class="headerlink" title="第二次泡沫造成的影响"></a>第二次泡沫造成的影响</h2><ol><li>开发商倒闭</li><li>金融机构坏账增加，有的机构破产</li><li>政府财政赤字严重，国债增加</li><li>普通家庭破产</li></ol><p>1995年后，日本和美国签订“反广场协定”，允许日本干预汇率，随后日元贬值。日本政府也实行了扩张性的财政政策，降低税赋和贴现率来挽救经济</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;日本在二战后得到美国的支持，发展迅速，GDP一度达到美国的70%，大有超越美国之势。但从90年代开始，日本房地产崩盘，经济长期萎靡不振，所以有了“失去的20年”。学习日本的房地产发展对判断中国的房地产前途有重要的借鉴意义。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="房产" scheme="http://www.xinyao.pub/categories/%E6%88%BF%E4%BA%A7/"/>
+    
+    
+      <category term="日本" scheme="http://www.xinyao.pub/tags/%E6%97%A5%E6%9C%AC/"/>
+    
+      <category term="房地产泡沫" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E5%9C%B0%E4%BA%A7%E6%B3%A1%E6%B2%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>各城市房价的影响因素</title>
     <link href="http://www.xinyao.pub/2017/01/04/2017-01-04-house-price/"/>
     <id>http://www.xinyao.pub/2017/01/04/2017-01-04-house-price/</id>
@@ -392,9 +416,9 @@
     
       <category term="R" scheme="http://www.xinyao.pub/tags/R/"/>
     
-      <category term="房价" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E4%BB%B7/"/>
-    
       <category term="房产" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E4%BA%A7/"/>
+    
+      <category term="房价" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E4%BB%B7/"/>
     
   </entry>
   
@@ -419,6 +443,30 @@
       <category term="城市" scheme="http://www.xinyao.pub/tags/%E5%9F%8E%E5%B8%82/"/>
     
       <category term="人口" scheme="http://www.xinyao.pub/tags/%E4%BA%BA%E5%8F%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言与svm分类</title>
+    <link href="http://www.xinyao.pub/2016/12/16/2016-12-16-svm/"/>
+    <id>http://www.xinyao.pub/2016/12/16/2016-12-16-svm/</id>
+    <published>2016-12-15T16:00:00.000Z</published>
+    <updated>2019-05-12T12:14:02.924Z</updated>
+    
+    <content type="html"><![CDATA[<p>支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程</p><a id="more"></a><h1 id="svm简介"><a href="#svm简介" class="headerlink" title="svm简介"></a>svm简介</h1><p>假如想要将<code>iris</code>数据集的<code>setosa</code>和<code>versicolor</code>分开，有无数种方法（有无数条直线或者曲线）。但似乎 <strong>红色这条线</strong> 的鲁棒性最强，对点波动的容忍度更高，而且直观上看，<strong>红色这条线</strong> 也在两堆点的正中间。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm1.png" alt></p><h1 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h1><p>假设超平面 $f(x) = w^{T}x + b$ ，当f(x)&gt;0时，y为正类(+1)，f(x)&lt;0时，y为反类(-1)。而且分类正确的条件是，f(x)和y同号，即 $f(x)y$ 为正。则定义 <strong>函数间隔</strong> 为 $\widehat{\gamma }=y(w^{T}x + b) = yf(x)$ 。由于w和b同时变动时，超平面不变 $(w^{T}x + b = 0)$ ，但是 <strong>函数间隔</strong> 会变化，所以函数衡量只能衡量分类是否正确，无法找出最完美的分割线。下面引出 <strong>几何间隔</strong> ，能很好的解决这个问题</p><h1 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm3.png" alt></p><p>如上图所示，r是x0到x的距离，$(w^{T}x + b = 0)$ 是超平面，w是法向量。则</p><script type="math/tex; mode=display">x = x_{0} + r\frac{w}{\left \| w \right \|}</script><p>$\left | w \right |$ 是单位长度的法向量，也称为 <strong>模</strong></p><p>上式两边同乘以 $w^{T}$，可得 $w^{T}x = w^{T}x_{0} + r\frac{w^{2}}{\left | w \right |}$ ，由于x0在超平面上，所以 $w^{T}x_{0}+b=0$ ，则 $\gamma =\frac{w^{T}x+b}{\left | w \right |}=\frac{f(x)}{\left | w \right |}$ ，但 $\gamma$ 有可能为负，将绝对值 $\gamma$ 写为：</p><script type="math/tex; mode=display">\widetilde{\gamma } = y\gamma =\frac{\widehat{\gamma }}{f(x)} * \frac{f(x)}{\left | w \right |} = \frac{\widehat{\gamma }}{\left | w \right |}</script><p>可以清楚的看到 <strong>几何间隔</strong> 不会随着w和b的变化而改变，最大间隔分类超平面中的 <strong>间隔</strong> 指的是几何间隔。</p><h1 id="最大间隔分类器"><a href="#最大间隔分类器" class="headerlink" title="最大间隔分类器"></a>最大间隔分类器</h1><p>最大间隔分类器的目标函数变成：$max \widehat{\gamma }$ ，同时满足 $y_{i}(w^{T}x_{i}+b)= \widehat{\gamma _{i}}  \geqslant  \widehat{\gamma }$</p><p>如果令函数间隔 $\widehat{\gamma } = 1$ ，则目标函数变为 $max\frac{1}{\left | w \right |}$ 且 $y_{i}(w^{T}x_{i}+b) \geqslant 1$ ，满足的 $y_{i}(w^{T}x_{i}+b) = 1$ 的点称为 <strong>支持向量</strong></p><h1 id="R包实现"><a href="#R包实现" class="headerlink" title="R包实现"></a>R包实现</h1><p>用SVM将<code>iris</code>数据集的<code>setosa</code>、<code>versicolor</code>、<code>virginica</code>分类，下图的分类边界即是 <strong>支持向量</strong></p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm2.png" alt></p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm实现iris数据集分类</span></span><br><span class="line">iris_subset = iris[,<span class="number">3</span>:<span class="number">5</span>] <span class="comment"># 筛选Petal.Length,Petal.Width,Species</span></span><br><span class="line">model = svm(Species~.,iris_subset) <span class="comment"># svm model</span></span><br><span class="line">iris_subset$svmpre = predict(model) <span class="comment"># svm预测值，等同于fit</span></span><br><span class="line">gridRange = apply(iris_subset[c(<span class="string">'Petal.Width'</span>,<span class="string">'Petal.Length'</span>)],<span class="number">2</span>,range) <span class="comment">#两个变量的最大和最小值</span></span><br><span class="line">x1 = seq(gridRange[<span class="number">1</span>,<span class="number">1</span>],gridRange[<span class="number">2</span>,<span class="number">1</span>],by=(gridRange[<span class="number">2</span>,<span class="number">1</span>]-gridRange[<span class="number">1</span>,<span class="number">1</span>])/<span class="number">100</span>)</span><br><span class="line">x2 = seq(gridRange[<span class="number">1</span>,<span class="number">2</span>],gridRange[<span class="number">2</span>,<span class="number">2</span>],by=(gridRange[<span class="number">2</span>,<span class="number">2</span>]-gridRange[<span class="number">1</span>,<span class="number">2</span>])/<span class="number">100</span>)</span><br><span class="line">grid = expand.grid(Petal.Width = x1,Petal.Length = x2)</span><br><span class="line">grid$class = predict(model,grid)</span><br><span class="line">ggplot(<span class="literal">NULL</span>) +</span><br><span class="line">  geom_point(data = iris_subset,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = Species,</span><br><span class="line">                 shape = Species)) +</span><br><span class="line">  geom_point(data = grid,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = as.factor(class)),</span><br><span class="line">             size = <span class="number">1.5</span>,</span><br><span class="line">             alpha = <span class="number">0.05</span>,</span><br><span class="line">             show.legend = <span class="literal">FALSE</span>) +</span><br><span class="line">  scale_color_brewer(palette = <span class="string">"Set1"</span>) +</span><br><span class="line">  scale_x_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  scale_y_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  ggtitle(<span class="string">"svm for iris"</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="R" scheme="http://www.xinyao.pub/categories/R/"/>
+    
+    
+      <category term="R" scheme="http://www.xinyao.pub/tags/R/"/>
+    
+      <category term="svm" scheme="http://www.xinyao.pub/tags/svm/"/>
     
   </entry>
   
@@ -454,55 +502,6 @@
       <category term="政策" scheme="http://www.xinyao.pub/tags/%E6%94%BF%E7%AD%96/"/>
     
       <category term="房地产政策" scheme="http://www.xinyao.pub/tags/%E6%88%BF%E5%9C%B0%E4%BA%A7%E6%94%BF%E7%AD%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言与svm分类</title>
-    <link href="http://www.xinyao.pub/2016/12/16/2016-12-16-svm/"/>
-    <id>http://www.xinyao.pub/2016/12/16/2016-12-16-svm/</id>
-    <published>2016-12-15T16:00:00.000Z</published>
-    <updated>2019-05-12T12:14:02.924Z</updated>
-    
-    <content type="html"><![CDATA[<p>支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程</p><a id="more"></a><h1 id="svm简介"><a href="#svm简介" class="headerlink" title="svm简介"></a>svm简介</h1><p>假如想要将<code>iris</code>数据集的<code>setosa</code>和<code>versicolor</code>分开，有无数种方法（有无数条直线或者曲线）。但似乎 <strong>红色这条线</strong> 的鲁棒性最强，对点波动的容忍度更高，而且直观上看，<strong>红色这条线</strong> 也在两堆点的正中间。</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm1.png" alt></p><h1 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h1><p>假设超平面 $f(x) = w^{T}x + b$ ，当f(x)&gt;0时，y为正类(+1)，f(x)&lt;0时，y为反类(-1)。而且分类正确的条件是，f(x)和y同号，即 $f(x)y$ 为正。则定义 <strong>函数间隔</strong> 为 $\widehat{\gamma }=y(w^{T}x + b) = yf(x)$ 。由于w和b同时变动时，超平面不变 $(w^{T}x + b = 0)$ ，但是 <strong>函数间隔</strong> 会变化，所以函数衡量只能衡量分类是否正确，无法找出最完美的分割线。下面引出 <strong>几何间隔</strong> ，能很好的解决这个问题</p><h1 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm3.png" alt></p><p>如上图所示，r是x0到x的距离，$(w^{T}x + b = 0)$ 是超平面，w是法向量。则</p><script type="math/tex; mode=display">x = x_{0} + r\frac{w}{\left \| w \right \|}</script><p>$\left | w \right |$ 是单位长度的法向量，也称为 <strong>模</strong></p><p>上式两边同乘以 $w^{T}$，可得 $w^{T}x = w^{T}x_{0} + r\frac{w^{2}}{\left | w \right |}$ ，由于x0在超平面上，所以 $w^{T}x_{0}+b=0$ ，则 $\gamma =\frac{w^{T}x+b}{\left | w \right |}=\frac{f(x)}{\left | w \right |}$ ，但 $\gamma$ 有可能为负，将绝对值 $\gamma$ 写为：</p><script type="math/tex; mode=display">\widetilde{\gamma } = y\gamma =\frac{\widehat{\gamma }}{f(x)} * \frac{f(x)}{\left | w \right |} = \frac{\widehat{\gamma }}{\left | w \right |}</script><p>可以清楚的看到 <strong>几何间隔</strong> 不会随着w和b的变化而改变，最大间隔分类超平面中的 <strong>间隔</strong> 指的是几何间隔。</p><h1 id="最大间隔分类器"><a href="#最大间隔分类器" class="headerlink" title="最大间隔分类器"></a>最大间隔分类器</h1><p>最大间隔分类器的目标函数变成：$max \widehat{\gamma }$ ，同时满足 $y_{i}(w^{T}x_{i}+b)= \widehat{\gamma _{i}}  \geqslant  \widehat{\gamma }$</p><p>如果令函数间隔 $\widehat{\gamma } = 1$ ，则目标函数变为 $max\frac{1}{\left | w \right |}$ 且 $y_{i}(w^{T}x_{i}+b) \geqslant 1$ ，满足的 $y_{i}(w^{T}x_{i}+b) = 1$ 的点称为 <strong>支持向量</strong></p><h1 id="R包实现"><a href="#R包实现" class="headerlink" title="R包实现"></a>R包实现</h1><p>用SVM将<code>iris</code>数据集的<code>setosa</code>、<code>versicolor</code>、<code>virginica</code>分类，下图的分类边界即是 <strong>支持向量</strong></p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/svm2.png" alt></p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm实现iris数据集分类</span></span><br><span class="line">iris_subset = iris[,<span class="number">3</span>:<span class="number">5</span>] <span class="comment"># 筛选Petal.Length,Petal.Width,Species</span></span><br><span class="line">model = svm(Species~.,iris_subset) <span class="comment"># svm model</span></span><br><span class="line">iris_subset$svmpre = predict(model) <span class="comment"># svm预测值，等同于fit</span></span><br><span class="line">gridRange = apply(iris_subset[c(<span class="string">'Petal.Width'</span>,<span class="string">'Petal.Length'</span>)],<span class="number">2</span>,range) <span class="comment">#两个变量的最大和最小值</span></span><br><span class="line">x1 = seq(gridRange[<span class="number">1</span>,<span class="number">1</span>],gridRange[<span class="number">2</span>,<span class="number">1</span>],by=(gridRange[<span class="number">2</span>,<span class="number">1</span>]-gridRange[<span class="number">1</span>,<span class="number">1</span>])/<span class="number">100</span>)</span><br><span class="line">x2 = seq(gridRange[<span class="number">1</span>,<span class="number">2</span>],gridRange[<span class="number">2</span>,<span class="number">2</span>],by=(gridRange[<span class="number">2</span>,<span class="number">2</span>]-gridRange[<span class="number">1</span>,<span class="number">2</span>])/<span class="number">100</span>)</span><br><span class="line">grid = expand.grid(Petal.Width = x1,Petal.Length = x2)</span><br><span class="line">grid$class = predict(model,grid)</span><br><span class="line">ggplot(<span class="literal">NULL</span>) +</span><br><span class="line">  geom_point(data = iris_subset,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = Species,</span><br><span class="line">                 shape = Species)) +</span><br><span class="line">  geom_point(data = grid,</span><br><span class="line">             aes(Petal.Width,Petal.Length,</span><br><span class="line">                 color = as.factor(class)),</span><br><span class="line">             size = <span class="number">1.5</span>,</span><br><span class="line">             alpha = <span class="number">0.05</span>,</span><br><span class="line">             show.legend = <span class="literal">FALSE</span>) +</span><br><span class="line">  scale_color_brewer(palette = <span class="string">"Set1"</span>) +</span><br><span class="line">  scale_x_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  scale_y_continuous(expand = c(<span class="number">0</span>,<span class="number">0</span>)) +</span><br><span class="line">  ggtitle(<span class="string">"svm for iris"</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;支持向量机(support vector machine)缩写为”svm”，是机器学习方法的重要组成。本文介绍用R语言解决svm分类的流程&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="R" scheme="http://www.xinyao.pub/categories/R/"/>
-    
-    
-      <category term="R" scheme="http://www.xinyao.pub/tags/R/"/>
-    
-      <category term="svm" scheme="http://www.xinyao.pub/tags/svm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2016年终总结</title>
-    <link href="http://www.xinyao.pub/2016/12/14/2016-12-14-2016-review/"/>
-    <id>http://www.xinyao.pub/2016/12/14/2016-12-14-2016-review/</id>
-    <published>2016-12-13T16:00:00.000Z</published>
-    <updated>2019-05-12T03:36:09.661Z</updated>
-    
-    <content type="html"><![CDATA[<p>2016年对国家来说是不太好过的，但对于我来说是收获颇丰的。首先是收获了爱情，其次是收获了见识。在这一年里发生了很多事，有行业的变化，有工作的变动，也有学习方向的变化。以前的我是个 <strong>实践者</strong>，表现在实现有意思的、好玩的技术，这个说实话没有什么含量，基本就是模仿；现在的我想要努力的变成一个 <strong>思考者</strong>，希望自己对生活和工作都多一些思考，多一些自己的见解和想法。</p><p>2016年一直在房地产行业，那就谈谈房地产吧</p><a id="more"></a><h1 id="房地产行业的分类"><a href="#房地产行业的分类" class="headerlink" title="房地产行业的分类"></a>房地产行业的分类</h1><p>房地产行业分为 <strong>新房、二手房、租赁</strong> 三部分。</p><ol><li><strong>新房</strong> 是开发商主导的市场。由开发商拿地、开发、新房代理商销售。由于开发商的利润率基本是固定的，所以新房的价格基本上由土地的价格决定</li><li><strong>二手房</strong> 是中介（二手房经纪公司）主导的市场。主要是中介获取房源和客源，然后进行房客的匹配，赚取中介费。二手房的价格是供需关系决定</li><li><strong>租赁</strong> 和二手房类似，也是房客匹配的过程，租赁价格也是供需关系决定</li></ol><h1 id="房地产行业的市场"><a href="#房地产行业的市场" class="headerlink" title="房地产行业的市场"></a>房地产行业的市场</h1><p>房地产行业市场很大。GMV达16万亿（新房:二手:租赁 = 10:5:1），占GDP的23%，是阿里巴巴GMV的5倍。下图有助于理解房地产市场有多大：</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/GMV.png" alt></p><p>房地产交易总体上是低频、客单价高的市场。大多数人一辈子只买1～2套房，每一次几乎要花掉自己的大部分资产</p><p>房地产交易是非标准化的交易。每套房子都有每套房子自己的特点，和标准化的网上购物不一样，房地产不光商品不一样、而且交易的流程也有可能千差万别</p><p>房地产行业是服务有待改善的行业。大部分人在租房的时候或多或少都被坑过，对中介怨气连连，在线下的购房环节也有各种各样的不确定因素导致心理的落差，抱怨服务的不好</p><p>经纪人是流动性非常大的职位。这一点和其它的销售型岗位类似，离职率非常高，平均年龄都在20多岁</p><p>存量房市场以改善型需求为主。学区房、小户型换大户型、近换远</p><h1 id="二手房交易"><a href="#二手房交易" class="headerlink" title="二手房交易"></a>二手房交易</h1><p>现在大家都在提 <strong>存量房时代</strong>，二手房交易量/新房交易量 &gt; 1 即代表进入了以二手房为主导的存量市场。一线城市由于对人才的吸引力强导致房屋需求旺盛，土地供应不足导致新房紧张而且地段偏远等原因，已经提前进入了存量房时代。新一线城市也即将进入存量房时代。但是广大的二三四线城市还处于 <strong>去库存</strong> 的阶段</p><h1 id="二手房交易流程"><a href="#二手房交易流程" class="headerlink" title="二手房交易流程"></a>二手房交易流程</h1><p>准备买房 -&gt; 看房选房 -&gt; 买卖双方资质审核 -&gt; 签订合同 -&gt; 房屋评估 -&gt; 网签 -&gt; 面签 -&gt; 银行审批 -&gt; 缴税过户 -&gt; 下房本 -&gt; 物业交割 -&gt; 产权抵押银行放款</p><h1 id="二手房市场的影响因素"><a href="#二手房市场的影响因素" class="headerlink" title="二手房市场的影响因素"></a>二手房市场的影响因素</h1><ol><li>整体而言，影响二手房交易量和交易价的主要因素是供需关系，以下因素都在影响供需关系：<ul><li>M2：国家印钞多了，持有大量货币的人为了避免通货膨胀，会把钱投入到相对保值的房地产市场</li><li>土地：地王会通过改变人们心理预期的方式来影响周围的房价</li><li>政策：限购政策（外地5年社保一套、本地单身一套、家庭二套）、限贷政策（银行限制贷款给开发商、提高购房人的首付比例、首套二套的认定标准）</li><li>利率：贷款利率的高低影响还贷额</li><li>缴税：影响买方购房能力</li><li>汇率：影响钱的流向</li></ul></li><li>对单个房屋而言，影响价格的主要因素是房屋的位置，比如是不是学区房、位于哪个区域、周边配套怎么样。地铁主要影响的是租赁的价格</li></ol><p>PS：供需关系还分结构，比如分面积段、居室段、价格段等。房地产市场的供需关系不太稳定，拿需求讲有强需求（现在必须买）、一般需求（什么时候买都行）、弱需求（买或不买都可以），导致预测房价困难很大</p><h1 id="二手房市场周期"><a href="#二手房市场周期" class="headerlink" title="二手房市场周期"></a>二手房市场周期</h1><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/trade price.png" alt></p><h1 id="我的贡献"><a href="#我的贡献" class="headerlink" title="我的贡献"></a>我的贡献</h1><ol><li>前期数据库的建设：主要有新增房、新增客、存量、带看、调价、成交、贷款、税费等数据，还包括一些wind的数据，取数用<code>WindR</code>包，详情参见<a href="http://www.xinyao.pub/2016/03/14/wind-r/">R连接Wind数据库</a></li><li>报表的制作：主要由<code>DT</code>、<code>shiny</code>、<code>RMySQL</code>、<code>dplyr</code>实现，基本是数据处理的操作</li><li>换房轨迹和看房轨迹（以小区为单位）：主要由<code>REmap</code>、<code>leaflet</code>实现，主要是看用户为什么换房、用户去哪里；客户看房热点、路线及所看房屋的特征，详情参见<a href="http://www.xinyao.pub/2016/09/10/remap/">REmap(0.3.2)有个bug～</a></li><li>词云：热点商圈、小区等：<code>wordcloud2</code>实现，参见附录</li><li>不同年代客户特征，参见附录</li><li>简单的爬虫实现，参见附录</li><li>R语言入门beamer，参见<a href="https://github.com/lixinyao/blogpictures/blob/master/pdf/R语言入门.pdf" target="_blank" rel="noopener">R语言入门.pdf</a></li><li>年初的自动化报告，参见<a href="https://github.com/lixinyao/blogpictures/blob/master/pdf/线下城市新增房源核实.pdf" target="_blank" rel="noopener">线下城市新增房源核实.pdf</a></li><li>年初的薪酬绩效测算回报，基本是照猫画虎的，参见《薪酬设计与绩效考核全案》，2013年赵国军版</li><li>30篇博客，参见<a href="http://www.xinyao.pub/archives/">http://www.xinyao.pub/archives/</a></li></ol><h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="词云"><a href="#词云" class="headerlink" title="词云"></a>词云</h2><p>比如北京2016年1～9月的热门楼盘：</p><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/hotresblock.png" alt></p><p><code>mydata3</code>数据有两列，一列是楼盘名称、一列是成交量</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(wordcloud2)</span><br><span class="line">colorvec = rep(c(<span class="string">"#d91e2e"</span>,<span class="string">"#f84461"</span>,<span class="string">"#fc9d9a"</span>,<span class="string">"#f4bfc0"</span>,<span class="string">"#8aabca"</span>,<span class="string">"#5ba9d7"</span>,<span class="string">"#558ed5"</span>,<span class="string">"#345c93"</span>),</span><br><span class="line">length.out=nrow(mydata3))</span><br><span class="line">wordcloud2(mydata3,fontWeight = <span class="string">"bold"</span>,color = colorvec,backgroundColor = <span class="string">"#444444"</span>)</span><br></pre></td></tr></table></figure><h2 id="不同年代客户特征"><a href="#不同年代客户特征" class="headerlink" title="不同年代客户特征"></a>不同年代客户特征</h2><p><img src="https://raw.githubusercontent.com/lixinyao/blogpictures/master/pictures/2016/70_80_90.png" alt></p><ol><li>50、60、70后购房需求逐渐减弱</li><li>80后是现阶段购房的主力军</li><li>90后的接盘能力逐渐变强</li></ol><p><strong>80后主要从50、60后手里购入了学区房</strong></p><p>客户年代为 <strong>80后</strong> ：</p><div class="table-container"><table><thead><tr><th style="text-align:center">年份</th><th style="text-align:center">业主年代</th><th style="text-align:center">活跃楼盘</th></tr></thead><tbody><tr><td style="text-align:center">2014</td><td style="text-align:center">50</td><td style="text-align:center">模式口西里;育新花园;芍药居北里</td></tr><tr><td style="text-align:center">2015</td><td style="text-align:center">50</td><td style="text-align:center">芍药居北里;康静里;松榆西里</td></tr><tr><td style="text-align:center">2016</td><td style="text-align:center">50</td><td style="text-align:center">模式口西里;芍药居北里;慧忠里</td></tr><tr><td style="text-align:center">2014</td><td style="text-align:center">60</td><td style="text-align:center">育新花园;北京像素北区;车站北里</td></tr><tr><td style="text-align:center">2015</td><td style="text-align:center">60</td><td style="text-align:center">芍药居北里;荣丰2008;育新花园</td></tr><tr><td style="text-align:center">2016</td><td style="text-align:center">60</td><td style="text-align:center">北广家园;芍药居北里;海特花园小区</td></tr></tbody></table></div><ul><li>模式口西里:学区房。石景山小学</li><li>育新花园:学区房。首都师范大学附属育新学校小学部</li><li>芍药居北里:学区房。中国人民大学附属中学朝阳学校小学部</li><li>康静里:学区房。北京师范大学奥林匹克花园实验小学</li><li>慧忠里:学区房。北京市朝阳外国语学校慧忠里校区</li><li>车站北里:学区房。北京市大兴区第八小学</li><li>荣丰2008:学区房。北京小学天宁寺分校</li><li>北广家园:学区房。北京市西城区五路通小学</li><li>松榆西里:学区房。垂杨柳中心小学</li><li>海特花园小区:学区房。海特小学</li></ul><p><strong>70后主要从90后手里购入了高端房</strong></p><p>客户年代为 <strong>70后</strong> ：</p><div class="table-container"><table><thead><tr><th style="text-align:center">年份</th><th style="text-align:center">业主年代</th><th style="text-align:center">活跃楼盘</th></tr></thead><tbody><tr><td style="text-align:center">2014</td><td style="text-align:center">90</td><td style="text-align:center">龙湖唐宁one;万年花城四期;新中关公寓</td></tr><tr><td style="text-align:center">2015</td><td style="text-align:center">90</td><td style="text-align:center">万达大湖公馆;保利茉莉公馆;宝石花苑</td></tr><tr><td style="text-align:center">2016</td><td style="text-align:center">90</td><td style="text-align:center">观湖国际;天创世缘;银河湾</td></tr></tbody></table></div><p>上述小区都是偏豪宅化的</p><h2 id="简单的爬虫实现"><a href="#简单的爬虫实现" class="headerlink" title="简单的爬虫实现"></a>简单的爬虫实现</h2><p>关于爬虫，以前写过一个关于<code>rvest</code>的博客：<a href="http://www.xinyao.pub/2016/05/17/r-rvest/">rvest爬取简单的网页信息</a></p><p>现在更新一个爬取 <strong>城市天气信息</strong> 的代码，网址是 <a href="http://lishi.tianqi.com/" target="_blank" rel="noopener">http://lishi.tianqi.com/</a></p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(RCurl)</span><br><span class="line"><span class="keyword">library</span>(XML)</span><br><span class="line"><span class="keyword">library</span>(stringr)</span><br><span class="line"><span class="keyword">library</span>(rvest)</span><br><span class="line"><span class="keyword">library</span>(dplyr)</span><br><span class="line">base_url = <span class="string">"http://lishi.tianqi.com/"</span> <span class="comment">#基本网址</span></span><br><span class="line">linklist = getHTMLLinks(base_url) <span class="comment">#获取网址里全部链接</span></span><br></pre></td></tr></table></figure><p>取出城市的链接地址，把所有的链接地址都处理成类似<code>http://lishi.tianqi.com/beijing/</code>的格式</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">linklist = linklist[str_detect(linklist,<span class="string">"/index.html"</span>)] <span class="comment">#获取城市的链接</span></span><br><span class="line">linklist = str_sub(linklist,<span class="number">1</span>,-<span class="number">11</span>) <span class="comment">#去除index.html</span></span><br></pre></td></tr></table></figure><p>生成类似<code>201610.html</code>的序列</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">datelist = seq.Date(as.Date(<span class="string">"2011-01-01"</span>),</span><br><span class="line">                    as.Date(<span class="string">"2016-11-30"</span>),</span><br><span class="line">                    by = <span class="string">"month"</span>) <span class="comment"># 生成日期序列</span></span><br><span class="line">datelist = datelist %&gt;%</span><br><span class="line">  str_sub(<span class="number">1</span>,<span class="number">7</span>) %&gt;%</span><br><span class="line">  str_replace_all(<span class="string">"-"</span>,<span class="string">""</span>) %&gt;%</span><br><span class="line">  str_c(<span class="string">".html"</span>,sep = <span class="string">""</span>) <span class="comment"># 生成.html序列</span></span><br></pre></td></tr></table></figure><p>生成类似<code>http://lishi.tianqi.com/beijing/201610.html</code>的序列，3000多个城市和地区的每月天气网址都大同小异</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">url_list = <span class="literal">NULL</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(linklist))&#123;</span><br><span class="line">  <span class="keyword">for</span>(j <span class="keyword">in</span> <span class="number">1</span>:length(datelist))&#123;</span><br><span class="line">      url_list[i*j] = str_c(linklist[i],datelist[j],sep = <span class="string">""</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="comment"># linklist和datelist拼接</span></span><br></pre></td></tr></table></figure><p>解析网址</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解析网址</span></span><br><span class="line">page_list = lapply(url_list,<span class="keyword">function</span>(url)&#123;</span><br><span class="line">  <span class="keyword">tryCatch</span>(</span><br><span class="line">    url %&gt;% read_html(),error = <span class="keyword">function</span>(e)&#123;<span class="literal">NA</span>&#125;)</span><br><span class="line">&#125;)</span><br><span class="line">na.omit.list = <span class="keyword">function</span>(y)&#123;<span class="keyword">return</span>(y[!sapply(y,<span class="keyword">function</span>(x) all(is.na(x)))])&#125;</span><br><span class="line">page_list = na.omit.list(page_list)</span><br><span class="line">mydata = list(<span class="literal">NULL</span>)</span><br><span class="line">mydata$data = lapply(page_list,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  <span class="keyword">tryCatch</span>(</span><br><span class="line">    matrix(x %&gt;% html_nodes(<span class="string">".tqtongji2"</span>) %&gt;% html_text() %&gt;%</span><br><span class="line">             str_replace_all(<span class="string">"[\r\n\t]"</span>,<span class="string">""</span>) %&gt;% str_trim() %&gt;%</span><br><span class="line">             str_split(<span class="string">"\\s+"</span>) %&gt;% unlist() %&gt;%</span><br><span class="line">             as.vector(),ncol = <span class="number">6</span>,byrow = <span class="literal">T</span>) %&gt;% as.data.frame(),</span><br><span class="line">    error = <span class="keyword">function</span>(e)&#123;<span class="literal">NA</span>&#125;)&#125;)</span><br><span class="line">mydata$city = lapply(page_list,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  x %&gt;% html_nodes(<span class="string">"#footer a:nth-child(1)"</span>) %&gt;% html_text()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(page_list))&#123;</span><br><span class="line">  <span class="keyword">if</span>(!is.na(mydata$data[[i]])) mydata$city[[i]] = mydata$city[[i]]</span><br><span class="line">  <span class="keyword">else</span> mydata$city[[i]] = <span class="literal">NA</span></span><br><span class="line">&#125; <span class="comment">#去除NA值</span></span><br><span class="line">mydata$data = na.omit.list(mydata$data)</span><br><span class="line">mydata$city = na.omit.list(mydata$city)</span><br></pre></td></tr></table></figure><p><code>mydata</code>即为生成的数据框，包括7列，<code>日期</code>、<code>最高气温</code>、<code>最低气温</code>、<code>天气</code>、<code>风向</code>、<code>风力</code>、<code>城市</code>。从2011年开始至2016年11月，一共200多万条数据</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:length(mydata$data))&#123;</span><br><span class="line">  mydata$data[[i]]$V7 = rep(mydata$city[[i]],length(mydata$data[[i]]$V1))</span><br><span class="line">&#125; <span class="comment">#添加城市名</span></span><br><span class="line">mydata = mydata$data</span><br><span class="line">mydata = do.call(rbind,mydata) <span class="comment"># 合并数据</span></span><br><span class="line">mydata$V7 = str_sub(mydata$V7,<span class="number">1</span>,-<span class="number">5</span>)</span><br><span class="line">mydata = mydata %&gt;%</span><br><span class="line">  filter(V1 != <span class="string">"日期"</span>) %&gt;%</span><br><span class="line">  rename(</span><br><span class="line">    日期=V1,</span><br><span class="line">    最高气温=V2,</span><br><span class="line">    最低气温=V3,</span><br><span class="line">    天气=V4,</span><br><span class="line">    风向=V5,</span><br><span class="line">    风力=V6,</span><br><span class="line">    城市=V7)</span><br></pre></td></tr></table></figure><blockquote><p>上述代码是我初学时写的，质量不高，以后有时间进行优化</p></blockquote><h1 id="17年计划简陋版"><a href="#17年计划简陋版" class="headerlink" title="17年计划简陋版"></a>17年计划简陋版</h1><ol><li>仔细研究周志华的《机器学习》，把每个算法都弄清楚，并且用R进行实现</li><li>了解市场和行业，用机器学习的方法得出有意思的结论</li><li>对博客进行进一步的整理完善</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2016年对国家来说是不太好过的，但对于我来说是收获颇丰的。首先是收获了爱情，其次是收获了见识。在这一年里发生了很多事，有行业的变化，有工作的变动，也有学习方向的变化。以前的我是个 &lt;strong&gt;实践者&lt;/strong&gt;，表现在实现有意思的、好玩的技术，这个说实话没有什么含量，基本就是模仿；现在的我想要努力的变成一个 &lt;strong&gt;思考者&lt;/strong&gt;，希望自己对生活和工作都多一些思考，多一些自己的见解和想法。&lt;/p&gt;
-&lt;p&gt;2016年一直在房地产行业，那就谈谈房地产吧&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://www.xinyao.pub/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="2016" scheme="http://www.xinyao.pub/tags/2016/"/>
-    
-      <category term="年终总结" scheme="http://www.xinyao.pub/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
