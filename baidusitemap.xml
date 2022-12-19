@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.xinyao.pub/2022/12/19/2022-12-19-loneliness-cat/</loc>
+    <lastmod>2022-12-19</lastmod>
+  </url>  <url>
+    <loc>http://www.xinyao.pub/2016/01/04/2016-01-04-git-world/</loc>
+    <lastmod>2021-01-03</lastmod>
+  </url>  <url>
     <loc>http://www.xinyao.pub/2020/12/26/2020-12-26-simple-happiness/</loc>
     <lastmod>2021-01-03</lastmod>
   </url>  <url>
@@ -164,9 +170,6 @@
     <lastmod>2019-05-11</lastmod>
   </url>  <url>
     <loc>http://www.xinyao.pub/2014/09/19/2014-09-19-r-timeseries1/</loc>
-    <lastmod>2019-05-11</lastmod>
-  </url>  <url>
-    <loc>http://www.xinyao.pub/2016/01/04/2016-01-04-git-world/</loc>
     <lastmod>2019-05-11</lastmod>
   </url>  <url>
     <loc>http://www.xinyao.pub/2015/05/03/2015-05-03-bad-things/</loc>

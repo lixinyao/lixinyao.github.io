@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李昕垚|Xinyao Li">
 <meta property="og:description" content="又是很久没有更新博客了，最近突发神经想要学习一下git，在此总结一些学习的东西 git是具有纪录 历次代码改动 和 协同合作 两个功能的 分布式版本控制系统，主要分为 工作区、暂存区、当前分支、远程分支 四部分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-11T09:39:44.112Z">
+<meta property="og:updated_time" content="2021-01-03T08:03:34.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拥抱git的世界">
 <meta name="twitter:description" content="又是很久没有更新博客了，最近突发神经想要学习一下git，在此总结一些学习的东西 git是具有纪录 历次代码改动 和 协同合作 两个功能的 分布式版本控制系统，主要分为 工作区、暂存区、当前分支、远程分支 四部分">
@@ -439,6 +439,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :refs/tags/&lt;tagname&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="博客已经从jekyll迁移到hexo"><a href="#博客已经从jekyll迁移到hexo" class="headerlink" title="博客已经从jekyll迁移到hexo"></a>博客已经从jekyll迁移到hexo</h1><p>原来的博客主题比较简陋，再加上jekyll访问速度较慢，今天把它迁移到了hexo，第一感觉是由原先的简陋变成了简洁，而且本地编译好后速度快很多。下面是每次推送到GitHub的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g #本地编译</span><br><span class="line">cp -R public/* .deploy/lixinyao.github.io #复制到.deploy</span><br><span class="line">cd .deploy/lixinyao.github.io</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+<p>2021年1月3日更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd lixinyao.github.io</span><br><span class="line">hexo g #本地编译</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>另外还要更新图床</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd blogpictures</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
 
@@ -593,7 +595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -615,7 +617,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">93</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -709,7 +711,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
